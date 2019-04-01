@@ -1,1 +1,26 @@
-site_name: My Docs
+site_name: DETA Manual
+repo_name: 'detahq/docs'
+repo_url: 'https://github.com/detahq/docs'
+theme: 
+  name: material
+  palette:
+    primary: 'blue grey'
+    accent: 'pink'
+  font:
+    text: Roboto
+    code: Fira Mono
+  logo:
+    icon: 'book'
+markdown_extensions:
+  - admonition
+  - codehilite
+  - pymdownx.tilde
+extra:
+  social:
+    - type: 'home'
+      link: 'https://web.deta.sh'
+nav:
+  - Teletype: teletype.md
+  - Installing Packages: packages.md
+  - DETA SDK (deta.lib): 
+    - Database (Key-Value): kv.md
