@@ -1,191 +1,119 @@
-# DETA Manual
+# Getting Started
 
 Instructions on how to get started with DETA.
 
-!!! Note
+## Spaces
 
-    `deta.lib` is under heavy development. Current version is `16` to use the current version run this in the command line:
-    `lib use 16`
+Upon logging into DETA your personal space should be activated.
 
+## Creating a Program
 
+Let's get a program created by typing:
 
-## How to import from the SDK
-
-    from deta.lib import <module>
-
-## Available modules
-
-### Email
-
-`send_email('email', 'subject', 'body')`
-
-### SMS
-
-`sms('+000000', 'message')`
-
-### Key-Value Store
-```python
-from deta.lib import Database
-
-# instantiate a db
-books = Database() # giving a name is optional: Databse('books'). 
-# the program's name will be used as name by default.
-# you also can re use another database by instantiating 
-# it with the program id or provided name: 
-users = Database('users')
-notes= Database('<id_of_notes_program>')
-
-books.put('mykey', {'my': 'val'})  # value can be: int, str or Decimal
-# also lists, dicts that can only contain mentioned types
-
-# the 'books.put' method overides value if key already exists. 
-#use 'books.add' to prevent overriding value (will raise KeyError)
-
-# get all books:
-books.all()
-
-# get one book
-books.get('mykey')
-
-# delete a book
-books.delete('mykey')
+```shell
+new my_first_program
 ```
 
-### Input schema/ UI schema
+into the [DETA Teletype](./teletype.md). DETA should create and open your program for you.
 
-    from deta.lib import fields
-    
-    # only 2 types are supported at the moment: fields.Str, fields.Int & fields.Bool
-    @schema
-    class Input:
-        name = fields.Str('Name', default='example')
-        age = fields.Int('Your age')
-    		cool = fields.Bool('Are you cool?')
-    
-    # inside the main program, you can access the input direclty via the event.i object
-    # event.i.name, ...
-    def program(event):
-        print(event.i.name) # => "alex" (if input was provided)
-     
+## Running Your Program
 
-### File Storage
+Let's run our new program by entering it into [DETA Teletype](./teletype.md) with arguments
+```shell
+run --name Beverly --age 34 --likes_ramen true
+```
+and hitting 'Enter'.
 
-    from deta.lib import files
-    
-    # store a file
-    files.put('filename.ext', file_content)
-    # content could be bytes, string or a file object
-    
-    # get a file
-    files.get('filename.ext')
-    
-    # delete a file
-    files.delete('filename.ext')
-    
-    # list files
-    files.list()
+The output panel on the right hand side of the console should log:
 
-### Rendering/returning HTML
+```json
+{
+    "name": "Beverly",
+    "age": 34,
+    "likes_ramen": true
+}
+```
 
-    from deta.lib.responses import HTML
-    
-    def program(event):
-    		# it is also possible to return an SVG object the same way 
-        return HTML('<h1>hello world</h1>')
+## Installing Packages
 
-### Simple Router
+Let's connect our program to the API-universe by installing the Python 'requests' library by typing the following command into the [DETA Teletype](./teletype.md):
 
-Deta ships with a simple router for the Methods `GET` and `POST` 
+```shell
+pip install requests
+```
 
-Deta does not support path-based routing yet (like `/some/deep/path`). 
+Wait for the requests library to install.
 
-Requests will be routed to the `POST` or `GET` functions.
+## Editing Programs
 
-    from deta.lib import router
-    
-    @router.get()
-    def myget(event):
-        return 'i got a get'
-    
-    @router.post()
-    def mypost(event):
-        return 'i got a post'
-    
-    def program(event):
-        return router.serve(event)
+Let's edit our program to make an API call using the requests library and return some data. Change the code to:
 
-To be able to pass-through extra data to your function (e.g. to the `GET` route), you should use query parameters.
+```python
+import requests
 
-`https://dev.deta.sh/<id>?occupation=poet&noice=true`
+def program(event):
+    """The entrypoint to your program logic."""
+    url = "https://testapp.deribit.com/api/v2/public/get_index?currency=BTC"
+    btc_price = requests.get(url).json()['result']['BTC']
+    return {
+        'current_btc_price': btc_price
+    }
+```
+And then type `deploy` into the DETA Teletype. 
 
-The values are inside the `event.params` object.
+Upon a successful `changes were deployed` message, type `run` into the [DETA Teletype](./teletype.md). 
 
-    from deta.lib import router
-    
-    @router.get()
-    def myget(event):
-    		occupation = event.params.get('occupation')
-        return f"I'm a {occupation} and I didn't event realize that."
-    
-    def program(event):
-        return router.serve(event)
+Your output should look something like this (but with current information):
 
-### Calling another program
+```json
+{
+    "current_btc_price": 7693.51
+}
+```
 
-    from deta.lib import load
-    
-    otherprogram = load('<program_id>')
-    
-    def program(event):    
-        return otherprogram(greeting='noice')  # otherprogram takes `greeting` arg
+## Using the DETA library (deta.lib)
 
-## Send messages to your dashboard
+DETA is bundled with a [library of services](./DETA_lib.md) that power up your programs out of the box. This library includes a schema for accepting outside arguments, database service, a file service, an RPC service for linking multiple DETA programs, a router for turning a DETA program into an API, an HTML rendering service, alongside email and SMS services.
 
-    from deta.lib import dash
-    
-    def program(event):
-    		dash('my message')  # simple message
-    		
-    		#  you can send a message to a specifc inbox. Default is the program's name.
-    		dash('my info', 'general') 
-    		
-    		# or add a message level (options: 0=info, 1=warning and 2=error). default: info
-    		# levels are color-coded
-    		dash('my warning', 'alerts', 1)
-    		
-    		# to pass a level without providing channel, just pass `None` instead.
-    		dash('Something is wrong!', None, 2)
-    		return {'message': 'cool'}
 
-# HTTP-Endpoint
+### Storing Data
 
-You can get your program's URL by replacing `<id>` in the following:
+Let's store our information into a database using the database service so that we can retrieve it later.
 
-[https://dev.deta.sh/](https://dev.deta.sh/deta-dev-program-)<id>
+Edit your code to import a database from [DETA.lib](./DETA_lib.md) and take a key under which we'll store the price in the database.
 
-With the `id`from the console. The id is a long string.
+```python
+from deta.lib import fields, Database
+import requests
 
-Example:
+btc_prices = Database()
 
-![](id-1e9a7ab5-7249-4be3-ad4e-e4db6a180bb7.png)
+class Input(fields.Schema):
+    """Please fill out the form."""
+    key = fields.Str('Database Key')
 
-URL:
+def program(event):
+    """The entrypoint to your program logic."""
+    url = "https://testapp.deribit.com/api/v2/public/get_index?currency=BTC"
+    btc_price = requests.get(url).json()['result']['BTC']
+    btc_prices.put(event.i.key, btc_price)
+    return prices.all()
+```
 
-[**https://dev.deta.sh/](https://dev.deta.sh/deta-dev-program-)b8b7f853-f38e-8736-aaca-4b3dd665afd5**
+Then `deploy` your changes through the DETA Teletype. 
 
-- Only `GET` and `POST` methods are allowed. (see [Simple Router](https://www.notion.so/DETA-Manual-a175bc23f7004d2481f2d21ca926e8d9#d8fbc751089743f8a730cd8a2afdbf5b))
-- **Endpoints are public!!!!**
+Upon a successful `changes were deployed` message, run:
 
-~~When a program is triggered via the http endpoint, you will find the request data in the `event` argument itself. Also `event.is_http` will be set to `True`~~
+```shell
+run --key first_price
+```
+in the Teletype.
 
-~~Try this in your program to find out what data is hidden in `event`~~
 
-# Dasboard
+Your output should look something like this (but with current information):
 
-As of recently, Deta offers a personal graphical dashboard available under:
-
-> [https://web.deta.sh/dash](https://web.deta.sh/dash)
-
-You can  also open it by typing `dash` in the console (Teletype).
-
-You can send messages to your dashboard from your programs. Read the details in this `deta.lib` section.
+```json
+{
+    "first_price": 7667.19
+}
+```

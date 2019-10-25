@@ -20,7 +20,8 @@ extra:
     - type: 'home'
       link: 'https://web.deta.sh'
 nav:
+  - Getting Started: index.md
+  - Concepts: concepts.md
   - Teletype: teletype.md
   - Installing Packages: packages.md
-  - DETA SDK (deta.lib): 
-    - Database (Key-Value): kv.md
+  - DETA SDK (deta.lib): DETA_lib.md
