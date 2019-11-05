@@ -1,7 +1,3 @@
-# DETA
-
-DETA is a single or multi-user computer.
-
 ## Spaces
 
 Spaces contain users.
