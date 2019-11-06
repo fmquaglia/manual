@@ -57,10 +57,10 @@ books.put('my_key', 'my_val')
 books.all()
 
 # get one book
-books.get('mykey')
+books.get('my_key')
 
 # delete a book
-books.delete('mykey')
+books.delete('my_key')
 ```
      
 
