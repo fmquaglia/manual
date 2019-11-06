@@ -117,3 +117,9 @@ Your output should look something like this (but with current information):
     "first_price": 7667.19
 }
 ```
+
+## Feedback
+
+Need help, have questions, or want to give feedback?
+
+Please send us a note! hello `@` deta `.` sh

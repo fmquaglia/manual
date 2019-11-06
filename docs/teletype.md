@@ -179,21 +179,33 @@ run --<kwarg_name1> <kwarg_value1> --<kwarg_name2> <kwarg_value2> -<flag1>
 # run --name Beverly --age 99 -t
 ```
 
-### Closing a Program
-
-```shell
-close
-```
-
 ### Package Installation
 
 ```shell
 pip install <package1_name> <package2_name>
 
-# pip install requests jinja2
+# pip install requests jinja2 ffmpeg markdown
 ```
 
 Multiple packages can be installed, conditional on space separation.
+
+### Package Uninstallation
+
+```shell
+pip uninstall <package1_name> <package2_name>
+
+# pip uninstall requests jinja2
+```
+
+Multiple packages can be uninstalled, conditional on space separation.
+
+### Package Cleaning
+
+```shell
+pip clean
+```
+
+All packages can be removed with the clean command.
 
 ### Program Specific Information
 
@@ -209,6 +221,20 @@ vim
 
 Vim keybindings can be added to the editor.
 
+### Changing a Program's DETA Library Version
+
+```shell
+lib use <lib_version>
+
+# lib use 4
+```
+
+### Closing a Program
+
+```shell
+close
+```
+
 ## Other Commands
 
 ### Logout
@@ -223,3 +249,10 @@ logout
 ```shell
 help
 ```
+
+
+## Feedback
+
+Need help, have questions, or want to give feedback?
+
+Please send us a note! hello `@` deta `.` sh
