@@ -4,22 +4,21 @@ Here is an example of implementing a map using multiple DETA programs, to illust
 
 The example is made of:
 
-* a map program (*mapper*) that takes 
-    * another DETA program (one of two callee programs)
-    * a serialized array of integers
+* a map program (*mapper*) that takes:
+    * `func` of type `Str`: another DETA program's id (one of two callee programs)
+    * `arr` of type `Str`: a serialized array of integers
 
-* two callee programs (*square* and *doubler*) that each take
-    * an integer (as *arg*)
+* two callee programs (*square* and *doubler*) that each take:
+    * `arg` of type `Int`: an integer
 
-* an executor program (*executor*) that takes
-    * a string specifying which program to call (as *func*)
-    * the array to map over (as *arr*)
+* an executor program (*executor*) that takes:
+    * `execute` of type `Str`: specifies which program to call 
 
-The mapper program applies the callee program (*func*) to each element (*arg*) in the array (*arr*), returning the mapped version.
+The mapper program applies the callee program `func` to each element `arg` in the array `arr`, returning the mapped version.
 
 The executor program coordinates the process for the user, displaying the result.
 
-This example requires copying the prog_id of a specific callee function to the `load` module of the [DETA libarary](../DETA_lib.md), indicated between brackers `<prog_id_of_callee>`.
+This example requires copying the `prog_id` of a specific callee function to the `load` module of the [DETA libarary](../DETA_lib.md), indicated between brackers `<prog_id_of_callee>`.
 
 ## mapper
 ### main.py
