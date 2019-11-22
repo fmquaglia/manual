@@ -2,8 +2,8 @@
 
 !!! Note
 
-    `deta.lib` is under heavy development. Current version is `4`. To use the current version run this in the DETA Teletype:
-    `lib use 4`
+    `deta.lib` is under heavy development. Current version is `9`. To use the current version run this in the DETA Teletype:
+    `lib use 9`
 
 ### How to import from the DETA Library
 

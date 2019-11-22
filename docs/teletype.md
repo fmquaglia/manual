@@ -69,16 +69,16 @@ open <group_name>/<program_name>
 ```
 The path convention `<group_name>`/`<program_name>` is required if there is a conflict and there is not a groupless program named `<program_name>`.
 
-### Changing the Group of a Program
+### Changing the Group & Name of a Program
 
 ```shell
-mv <program_name> <new_group_name>
+mv <program_name> <new_program_name>
 
-# mv prog_one group_two
+# mv prog_one prog_two
 
-mv <group_name>/<program_name> <new_group_name>
+mv <group_name>/<program_name> <new_group_name>/<new_program_name>
 
-# mv group_two/prog_one group_one
+# mv group_one/prog_two group_one/prog_two
 ```
 Two programs of the same name cannot live in the same group.
 
@@ -87,9 +87,9 @@ The path convention `<group_name>`/`<program_name>` is required if there is a co
 To refer to the groupless case, the `<group_name>` should be `root`.
 
 ```shell
-# mv group_one/prog_one root
+# mv group_one/prog_two root/prog_one
 
-# mv root/prog_one group_one
+# mv root/prog_one group_one/prog_one
 ```
 
 
@@ -139,7 +139,7 @@ Multiple file deploys are accepted, conditional on space separation.
 ```shell
 rm <file_name_one> <file_name_two>
 
-# deploy main.py calculator.py
+# rm main.py calculator.py
 ```
 
 Multiple file removals are accepted, conditional on space separation.
