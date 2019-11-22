@@ -1,6 +1,6 @@
 # Higher Order DETA Programs
 
-Here is an example of using DETA programs in a higher-order fashion.
+Here is an example of implementing a map using multiple DETA programs, to illustrate how they can be used in a higher order fashion.
 
 The example is made of:
 
