@@ -1,25 +1,9 @@
-# Installing packages
+# Packages
 
-Installing simple packages via pip is currently possible but might not work for packages with C dependencies.
+Installing packages via pip is currently possible in DETA.
 
-Most packages with C dependencies will fail! (any ML, OCR stuff, ...)
+However, the DETA package manager is under heavy development and performance has room for improvement.
 
-Syntax:
+See the `pip` commands in the [DETA Teletype](./teletype.md) for a complete description of options.
 
-```bash
-pip install mypackage
-```
-
-!!! attention
-    After trying to install a a package, Deta is not able to identify if the install was successful or not, pip does provide easy programmatic way to find that out.
-
-Please read the output and check for errors. If you found a critical error, please run: `pip remove mypackages` to remove it from the DB.
-
-!!! note
-    Some errors are not critical and the package will be installed anyway, it's worth trying the package first in your program before removing it.
-
-## To list your installed packages
-
-```bash
-pip list
-```
+A program's installed packages can be viewed in the 'INFO' pane under `deps` at the bottom of the DETA console.

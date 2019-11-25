@@ -1,185 +1,205 @@
+# The DETA Library
+
 !!! Note
 
-    `deta.lib` is under heavy development. Current version is `16` to use the current version run this in the command line:
-    `lib use 4`
+    `deta.lib` is under heavy development. Current version is `9`. To use the current version run this in the DETA Teletype:
+    `lib use 9`
 
-## How to import from the SDK
+### How to import from the DETA Library
 
     from deta.lib import <module>
+    from deta.lib.responses import <module>
 
 ## Available modules
 
-### Email
+### Input Schema
 
-`send_email('email', 'subject', 'body')`
+A program's input schema describes parameters that can be passed with a program's invocation.
 
-### SMS
+Input parameters can be of type `Str`, `Int`, or `Bool`.
 
-`sms('+000000', 'message')`
+Input parameters can be accessed directly via the `event.i` object inside the main 'program' function (defined in the `main.py` file of a program).
 
+```python
+from deta.lib import fields
+
+class Input(fields.Schema):
+    """Please fill out the form."""
+    name = fields.Str('Name')
+    age = fields.Int('Age')
+    likes_ramen = fields.Bool('Do you like ramen?')
+
+def program(event):
+    """The entrypoint to your program logic."""
+    return {
+        'name': event.i.name,
+        'age': event.i.age,
+        'likes_ramen': event.i.likes_ramen
+    }
+```
 ### Key-Value Store
+
 ```python
 from deta.lib import Database
 
-# instantiate a db
-books = Database() # giving a name is optional: Databse('books'). 
-# the program's name will be used as name by default.
-# you also can re use another database by instantiating 
-# it with the program id or provided name: 
-users = Database('users')
-notes= Database('<id_of_notes_program>')
+# instantiate a simple database
+books = Database() 
+# giving a name is optional: Database('books'). 
 
-books.put('mykey', {'my': 'val'})  # value can be: int, str or Decimal
-# also lists, dicts that can only contain mentioned types
+books.put('my_key', 'my_val')  
+# values can be: int, str or Decimal
+# lists & dicts that contain only mentioned types are also supported
 
-# the 'books.put' method overides value if key already exists. 
-#use 'books.add' to prevent overriding value (will raise KeyError)
+# 'books.put' overrides the value if the key already exists. 
+# 'books.add' will not override the value (but will raise a KeyError)
 
 # get all books:
 books.all()
 
 # get one book
-books.get('mykey')
+books.get('my_key')
 
 # delete a book
-books.delete('mykey')
+books.delete('my_key')
 ```
-
-### Input schema/ UI schema
-
-    from deta.lib import fields
-    
-    # only 2 types are supported at the moment: fields.Str, fields.Int & fields.Bool
-    @schema
-    class Input:
-        name = fields.Str('Name', default='example')
-        age = fields.Int('Your age')
-    		cool = fields.Bool('Are you cool?')
-    
-    # inside the main program, you can access the input direclty via the event.i object
-    # event.i.name, ...
-    def program(event):
-        print(event.i.name) # => "alex" (if input was provided)
      
 
 ### File Storage
+```python
+from deta.lib import files
 
-    from deta.lib import files
-    
-    # store a file
-    files.put('filename.ext', file_content)
-    # content could be bytes, string or a file object
-    
-    # get a file
-    files.get('filename.ext')
-    
-    # delete a file
-    files.delete('filename.ext')
-    
-    # list files
-    files.list()
+# store a file
+files.put('filename.ext', file_content)
+# content can be bytes, string or a file object
 
+# get a file
+files.get('filename.ext')
+
+# delete a file
+files.delete('filename.ext')
+
+# list files
+files.list()
+```
 ### Rendering/returning HTML
+```python
+from deta.lib.responses import HTML
 
-    from deta.lib.responses import HTML
-    
-    def program(event):
-    		# it is also possible to return an SVG object the same way 
-        return HTML('<h1>hello world</h1>')
-
+def program(event):
+    # it is also possible to return an SVG object the same way 
+    return HTML('<h1>hello world</h1>')
+```
 ### Simple Router
 
-Deta ships with a simple router for the Methods `GET` and `POST` 
+DETA ships with a simple router for the methods `GET` and `POST`.
 
-Deta does not support path-based routing yet (like `/some/deep/path`). 
+These methods can be invoked on the program specific url `<program_url>`.
 
-Requests will be routed to the `POST` or `GET` functions.
+DETA does not support path-based routing yet (like `/some/deep/path`). 
 
-    from deta.lib import router
-    
-    @router.get()
-    def myget(event):
-        return 'i got a get'
-    
-    @router.post()
-    def mypost(event):
-        return 'i got a post'
-    
-    def program(event):
-        return router.serve(event)
+Requests will be routed to the user defined `GET` or `POST` function by type.
+```python
+from deta.lib import router
 
-To be able to pass-through extra data to your function (e.g. to the `GET` route), you should use query parameters.
+@router.get()
+def myget(event):
+    return 'i got a get'
 
-`https://dev.deta.sh/<id>?occupation=poet&noice=true`
+@router.post()
+def mypost(event):
+    return 'i got a post'
 
-The values are inside the `event.params` object.
+def program(event):
+    return router.serve(event)
+```
 
-    from deta.lib import router
-    
-    @router.get()
-    def myget(event):
-    		occupation = event.params.get('occupation')
-        return f"I'm a {occupation} and I didn't event realize that."
-    
-    def program(event):
-        return router.serve(event)
+#### GET Requests
+Data can be passed to a DETA program with a `GET` request using query parameters:
+```
+<program_url>?school=Bauhaus&city=Weimar
+```
 
-### Calling another program
+The values are inside the `event.params` object, accesible via the `get` method.
+```python
+from deta.lib import router
 
-    from deta.lib import load
-    
-    otherprogram = load('<program_id>')
-    
-    def program(event):    
-        return otherprogram(greeting='noice')  # otherprogram takes `greeting` arg
+@router.get()
+def myget(event):
+    school = event.params.get('school')
+    city = event.params.get('city')
+    return f"I studied at {school} in {city}"
 
-## Send messages to your dashboard
+def program(event):
+    return router.serve(event)
+```
+#### POST Requests
 
-    from deta.lib import dash
-    
-    def program(event):
-    		dash('my message')  # simple message
-    		
-    		#  you can send a message to a specifc inbox. Default is the program's name.
-    		dash('my info', 'general') 
-    		
-    		# or add a message level (options: 0=info, 1=warning and 2=error). default: info
-    		# levels are color-coded
-    		dash('my warning', 'alerts', 1)
-    		
-    		# to pass a level without providing channel, just pass `None` instead.
-    		dash('Something is wrong!', None, 2)
-    		return {'message': 'cool'}
+Data can be passed to a DETA program with the `POST` route, using a JSON payload.
 
-# HTTP-Endpoint
+```JSON
+{
+    "id": "7",
+    "name": "Ludwig"
+}
+```
 
-You can get your program's URL by replacing `<id>` in the following:
+The values are accessible via the `event.i` object.
 
-[https://dev.deta.sh/](https://dev.deta.sh/deta-dev-program-)<id>
+```python
+from deta.lib import router, Database
 
-With the `id`from the console. The id is a long string.
+students = Database('enrollment')
 
-Example:
+@router.post()
+def mypost(event):
+    student_id = event.i.id
+    name = event.i.name
+    students.put(student_id, name)
+    return
 
-![](id-1e9a7ab5-7249-4be3-ad4e-e4db6a180bb7.png)
+def program(event):
+    return router.serve(event)
+```
 
-URL:
+#### HTTP-Endpoint
 
-[**https://dev.deta.sh/](https://dev.deta.sh/deta-dev-program-)b8b7f853-f38e-8736-aaca-4b3dd665afd5**
+The DETA console provides a view where GET requests can be made on a program.
 
-- Only `GET` and `POST` methods are allowed. (see [Simple Router](https://www.notion.so/DETA-Manual-a175bc23f7004d2481f2d21ca926e8d9#d8fbc751089743f8a730cd8a2afdbf5b))
-- **Endpoints are public!!!!**
+The URL bar in the program's GET view contains the program's URL.
 
-~~When a program is triggered via the http endpoint, you will find the request data in the `event` argument itself. Also `event.is_http` will be set to `True`~~
+- Only `GET` and `POST` methods are allowed on this endpoint.
 
-~~Try this in your program to find out what data is hidden in `event`~~
+User defined query parameters can be added to the GET request.
 
-# Dasboard
+### Load (RPC)
 
-As of recently, Deta offers a personal graphical dashboard available under:
+DETA programs can call other DETA programs (by default within the same space).
 
-> [https://web.deta.sh/dash](https://web.deta.sh/dash)
+A caller program can pass arguments to a callee (as outlined in the callee's input schema).
 
-You can  also open it by typing `dash` in the console (Teletype).
+```python
+from deta.lib import load
 
-You can send messages to your dashboard from your programs. Read the details in this `deta.lib` section.
+otherprogram = load('<program_id>')
+
+def program(event):    
+    return otherprogram(greeting='noice')  # otherprogram takes `greeting` arg
+```
+
+### Email
+
+Coming soon.
+
+`send_email('email', 'subject', 'body')`
+
+### SMS
+
+Coming soon.
+
+`sms('+000000', 'message')`
+
+## Feedback
+
+Need help, have questions, or want to give feedback?
+
+Please send us a note! hello `@` deta `.` sh

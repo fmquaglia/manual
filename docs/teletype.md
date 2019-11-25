@@ -1,4 +1,4 @@
-# DETA Teletype commands (console)
+# DETA Teletype Commands (Console)
 
 User defined variable inputs are indicated between `<` and `>` symbols, as such: `<variable_name>`. 
 
@@ -67,49 +67,54 @@ open <group_name>/<program_name>
 
 # open group_one/prog_one
 ```
-The path convention `<group_name>`/`<program_name>` is required if there is a conflict and there is not a groupless named `<program_name>`.
+The path convention `<group_name>`/`<program_name>` is required if there is a conflict and there is not a groupless program named `<program_name>`.
 
-### Changing the Group of a Program
+### Changing the Group & Name of a Program
 
 ```shell
-mv <group_name>/<program_name> <new_group_name>
+mv <program_name> <new_program_name>
 
-# mv group_one/prog_one group_two
+# mv prog_one prog_two
+
+mv <group_name>/<program_name> <new_group_name>/<new_program_name>
+
+# mv group_one/prog_two group_one/prog_two
 ```
 Two programs of the same name cannot live in the same group.
 
-To manipulate groupless programs, the `<group_name>` should be `root`.
+The path convention `<group_name>`/`<program_name>` is required if there is a conflict and there is not a groupless program named `<program_name>`.
+
+To refer to the groupless case, the `<group_name>` should be `root`.
 
 ```shell
-# mv group_two/prog_one root
+# mv group_one/prog_two root/prog_one
 
-# mv root/prog_one group_one
+# mv root/prog_one group_one/prog_one
 ```
 
 
-## Commands Valid After A Program Is 'Open'
+## Commands Valid After a Program is Open
 
 ### Creating Files
 
 ```shell
-edit <file_path_and_name>
+edit <file_name>
 
 # edit main.py
 
-# edit utils/calculator.py
+# edit post.md
 ```
+
+Directories are not currently supported.
 
 ### Opening Files
 
 ```shell
-edit <file_path_and_name>
+edit <file_name>
 
 # edit main.py
-
-# edit utils/calculator.py
-
-# edit dir1/dir2/file.py
 ```
+
 
 ### Mass Deploy
 
@@ -117,14 +122,14 @@ edit <file_path_and_name>
 deploy
 ```
 
-This command deploys all changes you have made to your files.
+Deploys all changes you have made to your files.
 
 ### Selected Deploy
 
 ```shell
-deploy <file_path_and_name_one> <file_path_and_name_two>
+deploy <file_name_one> <file_name_two>
 
-# deploy main.py utils/calculator.py
+# deploy main.py calculator.py
 ```
 
 Multiple file deploys are accepted, conditional on space separation.
@@ -132,27 +137,37 @@ Multiple file deploys are accepted, conditional on space separation.
 ### Removing files
 
 ```shell
-rm <path_and_file_name_one> <path_and_file_name_two>
+rm <file_name_one> <file_name_two>
 
-# deploy main.py utils/calculator.py
+# rm main.py calculator.py
 ```
 
 Multiple file removals are accepted, conditional on space separation.
 
-### Changing Filename (& Path) In Program
+### Changing Filenames
 
 ```shell
 mv -fl <old_path_name> <new_path_name>
 
-# mv dir1/dir2/file.py main.py
+# mv file.py calculator.py
 ```
 
 ### Environment Variables
+
+#### Creation
 
 ```shell
 env set --<env_var_name> <env_var_val> --<env_var_name2> <env_var_value2>
 
 # env set --my_api_key X2019WzT
+```
+
+#### Deletion
+
+```shell
+env rm <env_var_name> <env_var_name2> 
+
+# env rm my_api_key
 ```
 Environment variable names must start with a letter and can contain letters, digits and `_`. No spaces or other characters are allowed.
 
@@ -164,21 +179,33 @@ run --<kwarg_name1> <kwarg_value1> --<kwarg_name2> <kwarg_value2> -<flag1>
 # run --name Beverly --age 99 -t
 ```
 
-### Closing a Program
-
-```shell
-close
-```
-
 ### Package Installation
 
 ```shell
 pip install <package1_name> <package2_name>
 
-# pip install requests jinja2
+# pip install requests jinja2 ffmpeg markdown
 ```
 
-Multiple packages can be installed, conditional on space separated names.
+Multiple packages can be installed, conditional on space separation.
+
+### Package Uninstallation
+
+```shell
+pip uninstall <package1_name> <package2_name>
+
+# pip uninstall requests jinja2
+```
+
+Multiple packages can be uninstalled, conditional on space separation.
+
+### Package Cleaning
+
+```shell
+pip clean
+```
+
+All packages can be removed with the clean command.
 
 ### Program Specific Information
 
@@ -186,13 +213,27 @@ Multiple packages can be installed, conditional on space separated names.
 meta
 ```
 
-### vim Keybindings
+### Vim Keybindings
 
 ```shell
 vim
 ```
 
-vim keybindings can be added to the editor.
+Vim keybindings can be added to the editor.
+
+### Changing a Program's DETA Library Version
+
+```shell
+lib use <lib_version>
+
+# lib use 4
+```
+
+### Closing a Program
+
+```shell
+close
+```
 
 ## Other Commands
 
@@ -208,3 +249,10 @@ logout
 ```shell
 help
 ```
+
+
+## Feedback
+
+Need help, have questions, or want to give feedback?
+
+Please send us a note! hello `@` deta `.` sh

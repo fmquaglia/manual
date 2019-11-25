@@ -1,58 +1,53 @@
 ## Spaces
 
-Spaces are a place for individuals and teams to create, update, and run programs.
+Spaces contain users.
 
+### Users
 
+Users of a space can perform actions, limited by their role.
 
-## Programs
+#### Roles
 
-You can create, open, modify, and run programs. 
+Nones can do nothing by default.
+
+Members can create, edit, and run programs.
+
+Admins are members who can also add members and change their role.  
+
+<br>
+<br>
+
+Spaces contain programs.
+
+### Programs
 
 Programs are made up of files.
 
+#### Files
 
-
-## Files
-
-You can edit files within an open program. Once you have changed file(s) you can deploy these changes.
+Users can create and modify files.
 
 The file which controls a program's execution is main.py, it is programmed to receive.
 
 You can edit other files as you like, but main.py will never leave.
 
+<br>
 
+Programs are bundled with the [DETA library](DETA_lib.md)
 
-## The Console
+#### The DETA Library
 
-The console is a page in DETA that lets you create, edit, and run programs.
+The DETA library provides an interface for processing inputs, rendering HTML, and creating and accessing resources.
 
-The console is comprised of the DETA canvas, the DETA Teletype, output views, a configuration panel, and a stream of logs.
+<br>
 
-### The Canvas
+Programs have access to resources.
 
-The canvas is DETA's text editor.
+#### Resources
 
+Resources include an API, file storage, data storage, other programs, e-mail, and SMS.
 
-### The DETA Teletype
+<br>
+<br>
 
-A list of valid commands for the DETA Teletype is [here](./teletype.md).
-
-### The Config Panel
-
-The config panel is made up of a file browser, program specific information, and a permissions tab.
-
-### Output Views
-
-#### Teletype Output
-
-The Teletype output displays primarily outputs and errors from running programs triggered in the Teletype.
-
-#### GET Request
-
-The GET request output view executes a GET request to your DETA program. You can add optional params into the URL bar.
-
-If you deploy changes to your program this view will update in real-time, running the new program.
-
-### Logs
-
-The Logs section streams logs from running programs.
+What will you build?

@@ -52,7 +52,6 @@ Let's edit our program to make an API call using the requests library and return
 import requests
 
 def program(event):
-    """The entrypoint to your program logic."""
     url = "https://testapp.deribit.com/api/v2/public/get_index?currency=BTC"
     btc_price = requests.get(url).json()['result']['BTC']
     return {
@@ -89,15 +88,13 @@ import requests
 btc_prices = Database()
 
 class Input(fields.Schema):
-    """Please fill out the form."""
     key = fields.Str('Database Key')
 
 def program(event):
-    """The entrypoint to your program logic."""
     url = "https://testapp.deribit.com/api/v2/public/get_index?currency=BTC"
     btc_price = requests.get(url).json()['result']['BTC']
-    btc_prices.put(event.i.key, btc_price)
-    return prices.all()
+    btc_prices.put(event.i.key, int(btc_price))
+    return btc_prices.all()
 ```
 
 Then `deploy` your changes through the DETA Teletype. 
@@ -113,7 +110,16 @@ in the Teletype.
 Your output should look something like this (but with current information):
 
 ```json
-{
-    "first_price": 7667.19
-}
+[
+    {
+        "key": "first_price",
+        "data": "7269"
+    },
+]
 ```
+
+## Feedback
+
+Need help, have questions, or want to give feedback?
+
+Please send us a note! hello `@` deta `.` sh
