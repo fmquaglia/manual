@@ -1,4 +1,4 @@
 # Examples
 
-#### [Rendering Markdown](examples/markdown.md)
+#### [Rendering Markdown With Dynamic Data](examples/markdown.md)
 #### [Higher Order DETA Programs](examples/higher_order.md)
