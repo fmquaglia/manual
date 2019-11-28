@@ -155,7 +155,7 @@ def mypost(event):
     student_id = event.i.id
     name = event.i.name
     students.put(student_id, name)
-    return
+    return students.all()
 
 def program(event):
     return router.serve(event)
@@ -176,6 +176,8 @@ User defined query parameters can be added to the GET request.
 DETA programs can call other DETA programs (by default within the same space).
 
 A caller program can pass arguments to a callee (as outlined in the callee's input schema).
+
+To load the callee program into the caller program, pass the callee's program id (found in the `INFO` tab of an open program) as a string into the load module.
 
 ```python
 from deta.lib import load

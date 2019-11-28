@@ -4,13 +4,12 @@ repo_url: 'https://github.com/detahq/docs'
 theme: 
   name: material
   palette:
-    primary: 'blue grey'
-    accent: 'pink'
+    primary: 'grey'
+    accent: 'purple'
   font:
-    text: Roboto
-    code: Fira Mono
-  logo:
-    icon: 'book'
+    text: Avenir
+    code: Courier
+  logo: '/images/logo.svg'
 markdown_extensions:
   - admonition
   - codehilite
