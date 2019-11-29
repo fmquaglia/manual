@@ -5,10 +5,10 @@ theme:
   name: material
   palette:
     primary: 'grey'
-    accent: 'purple'
+    accent: 'pink'
   font:
     text: Avenir
-    code: Courier
+    code: Fira
   logo: '/images/logo.svg'
 markdown_extensions:
   - admonition
@@ -18,6 +18,8 @@ extra:
   social:
     - type: 'home'
       link: 'https://web.deta.sh'
+extra_css:
+  - css/extra.css
 nav:
   - Getting Started: index.md
   - Concepts: concepts.md
