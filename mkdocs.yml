@@ -1,16 +1,15 @@
 site_name: DETA Manual
-repo_name: 'detahq/docs'
-repo_url: 'https://github.com/detahq/docs'
+repo_name: 'deta/docs'
+repo_url: 'https://github.com/deta/docs'
 theme: 
   name: material
   palette:
-    primary: 'blue grey'
+    primary: 'grey'
     accent: 'pink'
   font:
-    text: Roboto
+    text: Questrial
     code: Fira Mono
-  logo:
-    icon: 'book'
+  logo: '/images/logo.svg'
 markdown_extensions:
   - admonition
   - codehilite
@@ -19,10 +18,12 @@ extra:
   social:
     - type: 'home'
       link: 'https://web.deta.sh'
+extra_css:
+  - css/extra.css
 nav:
   - Getting Started: index.md
   - Concepts: concepts.md
   - Teletype Commands: teletype.md
-  - The DETA Library: DETA_lib.md
+  - The DETA Library & Resources: DETA_lib.md
   - Installing Packages: packages.md
   - Example Apps: examples.md

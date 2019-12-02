@@ -1,0 +1,29 @@
+/*
+//////////////////
+// Main content //
+//////////////////
+*/
+
+/*
+Default text color
+and background color
+*/
+.md-header, .md-footer-nav {
+    background-color: #252D34 !important;
+}
+
+@media only screen and (max-width: 76.1875em) {
+    .md-nav--primary, .md-nav__title--site, .md-nav__source {
+        background-color: #252D34 !important;
+    }
+}
+
+
+@font-face {
+    font-family: 'Questrial';
+    src: url('https://fonts.googleapis.com/css?family=Questrial&display=swap');
+    font-weight: normal;
+    font-style: normal;
+}
+
+

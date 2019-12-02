@@ -92,6 +92,36 @@ To refer to the groupless case, the `<group_name>` should be `root`.
 # mv root/prog_one group_one/prog_one
 ```
 
+### Scheduling Program Execution
+
+DETA's scheduler accepts cron expressions of length 6, with times in UTC.
+
+```shell
+cron <group_name>/<prog_name> <minute> <hour> <month_day> <week_day> <year>
+
+# cron group_one/prog_one 0 10 * * ? *
+```
+
+Rate based scheduling is also accepted.
+
+```shell
+cron <group_name>/<prog_name> <interval> <unit>
+
+# cron group_one/prog_one 3 minutes
+```
+
+Rate based scheduling will execute a program every `interval` according to the `unit`. Accepted `unit` values are `minutes`, `hours`, `days`. If the `interval` is `1`, the singular of `minute`, `hour`, or `day` should be used.
+
+### Removing an Execution Schedule for a Program
+
+The execution schedule for a program can be removed with the `-r` flag.
+
+```shell
+cron -r <group_name>/<prog_name>
+
+# cron -r group_one/prog_one
+```
+
 
 ## Commands Valid After a Program is Open
 
@@ -174,9 +204,9 @@ Environment variable names must start with a letter and can contain letters, dig
 ### Running Programs
 
 ```shell
-run --<kwarg_name1> <kwarg_value1> --<kwarg_name2> <kwarg_value2> -<flag1>
+run --<kwarg_name1> <kwarg_value1> --<kwarg_name2> <kwarg_value2>
 
-# run --name Beverly --age 99 -t
+# run --name Beverly --age 99
 ```
 
 ### Package Installation
@@ -206,6 +236,24 @@ pip clean
 ```
 
 All packages can be removed with the clean command.
+
+### Execution Schedules
+
+An execution schedule can be set or removed for an open program. Rate based expressions are also accepted.
+
+```shell
+cron *this <minute> <hour> <month_day> <week_day> <year>
+
+# cron 0/5 8-17 ? * MON-FRI *
+# cron 2 minutes
+```
+
+The `-r` flag can also be used on an open program to remove an execution schedule.
+
+```shell
+
+cron -r
+```
 
 ### Program Specific Information
 
