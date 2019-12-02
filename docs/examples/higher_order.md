@@ -18,7 +18,7 @@ The mapper program applies the callee program `func` to each element `arg` in th
 
 The executor program coordinates the process for the user, displaying the result.
 
-This example requires copying the `prog_id` of a specific callee function to the `load` module of the [DETA libarary](../DETA_lib.md), indicated between brackers `<prog_id_of_callee>`.
+This example requires copying the `prog_id` of a specific callee function to the `load` module of the [DETA library](../DETA_lib.md), indicated between brackers `<prog_id_of_callee>`.
 
 ## mapper
 ### main.py
