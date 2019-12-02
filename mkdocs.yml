@@ -1,6 +1,6 @@
 site_name: DETA Manual
-repo_name: 'detahq/docs'
-repo_url: 'https://github.com/detahq/docs'
+repo_name: 'deta/docs'
+repo_url: 'https://github.com/deta/docs'
 theme: 
   name: material
   palette:
@@ -8,7 +8,7 @@ theme:
     accent: 'pink'
   font:
     text: Questrial
-    code: Fira Code
+    code: Fira Mono
   logo: '/images/logo.svg'
 markdown_extensions:
   - admonition

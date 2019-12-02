@@ -19,14 +19,6 @@ and background color
 }
 
 
-
-@font-face {
-    font-family: 'Fira Code';
-    src: url('https://fonts.googleapis.com/css?family=Fira+Code&display=swap');
-    font-weight: normal;
-    font-style: normal;
-}
-
 @font-face {
     font-family: 'Questrial';
     src: url('https://fonts.googleapis.com/css?family=Questrial&display=swap');
