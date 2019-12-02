@@ -97,17 +97,17 @@ To refer to the groupless case, the `<group_name>` should be `root`.
 DETA's scheduler accepts cron expressions of length 6, with times in UTC.
 
 ```shell
-cron <group_name>/<prog_name> <minute> <hour> <monthDay> <weekDay> <year>
+cron <group_name>/<prog_name> <minute> <hour> <month_day> <week_day> <year>
 
 # cron group_one/prog_one 0 10 * * ? *
 ```
 
-Rate based scheduling is also accepted with the `-rate` flag.
+Rate based scheduling is also accepted.
 
 ```shell
-cron <group_name>/<prog_name> -rate <interval> <unit>
+cron <group_name>/<prog_name> <interval> <unit>
 
-# cron group_one/prog_one -rate 3 minutes
+# cron group_one/prog_one 3 minutes
 ```
 
 Rate based scheduling will execute a program every `interval` according to the `unit`. Accepted `unit` values are `minutes`, `hours`, `days`. If the `interval` is `1`, the singular of `minute`, `hour`, or `day` should be used.
@@ -239,24 +239,20 @@ All packages can be removed with the clean command.
 
 ### Execution Schedules
 
-An execution schedule can be set or removed for an open program using the `*this` as an identifier.
+An execution schedule can be set or removed for an open program. Rate based expressions are also accepted.
 
 ```shell
-cron *this <minute> <hour> <monthDay> <weekDay> <year>
+cron *this <minute> <hour> <month_day> <week_day> <year>
 
-# cron *this 0/5 8-17 ? * MON-FRI *
+# cron 0/5 8-17 ? * MON-FRI *
+# cron 2 minutes
 ```
 
-The `-rate` and `-r` flags can also be used in conjunction with `*this`.
+The `-r` flag can also be used on an open program to remove an execution schedule.
 
 ```shell
-cron *this -rate <interval> <unit>
 
-# cron *this -rate 10 hours
-
-cron -r *this
-
-# cron -r *this
+cron -r
 ```
 
 ### Program Specific Information
