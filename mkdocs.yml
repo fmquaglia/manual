@@ -7,7 +7,7 @@ theme:
     primary: 'grey'
     accent: 'pink'
   font:
-    text: Avenir
+    text: Questrial
     code: Fira
   logo: '/images/logo.svg'
 markdown_extensions:
