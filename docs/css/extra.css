@@ -9,10 +9,6 @@ Default text color
 and background color
 */
 
-.p {
-    line-height: 2em !important;
-}
-
 .md-header, .md-footer-nav {
     background-color: #252D34 !important;
 }
