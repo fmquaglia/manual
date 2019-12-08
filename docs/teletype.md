@@ -239,10 +239,11 @@ All packages can be removed with the clean command.
 
 ### Execution Schedules
 
-An execution schedule can be set or removed for an open program. Rate based expressions are also accepted.
+An execution schedule can be set or removed for an open program, no path is necessary. Rate based expressions are also accepted.
 
 ```shell
-cron *this <minute> <hour> <month_day> <week_day> <year>
+cron <minute> <hour> <month_day> <week_day> <year>
+cron <interval> <unit>
 
 # cron 0/5 8-17 ? * MON-FRI *
 # cron 2 minutes
