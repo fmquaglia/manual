@@ -143,7 +143,7 @@ Data can be passed to a DETA program with the `POST` route, using a JSON payload
 }
 ```
 
-The values are accessible via the `event.i` object.
+The values are accessible via the `event.body` object.
 
 ```python
 from deta.lib import router, Database
@@ -152,8 +152,8 @@ students = Database('enrollment')
 
 @router.post()
 def mypost(event):
-    student_id = event.i.id
-    name = event.i.name
+    student_id = event.body['id']
+    name = event.body['name']
     students.put(student_id, name)
     return students.all()
 
@@ -190,15 +190,17 @@ def program(event):
 
 ### Email
 
-Coming soon.
+DETA programs have their own unique email address.
 
-`send_email('email', 'subject', 'body')`
+```python
+from deta.lib import send_email
 
-### SMS
 
-Coming soon.
+def program(event):
+    send_email('email', 'subject', 'body')
+    return
+```
 
-`sms('+000000', 'message')`
 
 ## Feedback
 
