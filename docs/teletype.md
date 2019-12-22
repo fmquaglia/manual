@@ -182,6 +182,43 @@ mv -fl <old_path_name> <new_path_name>
 # mv file.py calculator.py
 ```
 
+### Changing API Permissions
+
+```shell
+api open
+
+api close
+```
+
+The status of a program's API can be found in the INFO panel.
+
+### Permissions
+
+#### List Program Permissions
+
+```shell
+ls -perms
+```
+
+#### Add User Permissions
+
+Permissions can be added to a program.
+
+```shell
+set -perms --<username> permission
+
+# set -perms --beverly run
+```
+Valid permission levels are `view`, `run`, and `full`.
+
+#### Remove User Permissions
+
+```shell
+rm -perms --<username permission
+
+# rm -perms --beverly run
+```
+
 ### Environment Variables
 
 #### Creation
