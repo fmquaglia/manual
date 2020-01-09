@@ -1,4 +1,4 @@
-# DETA Teletype Commands (Console)
+# DETA Teletype Commands (Studio)
 
 User defined variable inputs are indicated between `<` and `>` symbols, as such: `<variable_name>`. 
 
@@ -181,6 +181,15 @@ mv -fl <old_path_name> <new_path_name>
 
 # mv file.py calculator.py
 ```
+### Entering and Exiting a Debug Session
+
+```shell
+debug 
+
+# will begin or end a debug session depending on session status
+```
+
+A debug session records all incoming requests to a program and allows them to be cloned and replayed.
 
 ### Changing API Permissions
 
