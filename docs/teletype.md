@@ -181,15 +181,25 @@ mv -fl <old_path_name> <new_path_name>
 
 # mv file.py calculator.py
 ```
-### Entering and Exiting a Debug Session
+### Changing the Log Level
 
 ```shell
-debug 
+set -log <level>
 
-# will begin or end a debug session depending on session status
+rm -log
+
+# set -log debug
+
+# set -log off
+
+# rm -log
 ```
 
-A debug session records all incoming requests to a program and allows them to be cloned and replayed.
+The log level of a program indicates what should be recorded and cached (incoming requests, program responses, errors, logs).
+
+Currently valid levels are `debug` and `off`.
+
+Using `rm -log` will set the log level to `off`.
 
 ### Changing API Permissions
 
