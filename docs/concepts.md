@@ -4,15 +4,23 @@ Spaces contain users.
 
 ### Users
 
-Users of a space can perform actions, limited by their role.
+Users of a space include admins and members.
 
 #### Roles
 
-Nones can do nothing by default.
+Members can create programs with full access to these programs.
 
-Members can create, edit, and run programs.
+Admins have full access to every program in a space and can add members to a space.
 
-Admins are members who can also add members and change their role.  
+Guests and members can interact with a program accrding to their access level.
+
+##### Access Levels
+
+View access allows a user to view the source code.
+
+Run access allows a user to run a program.
+
+Full access allows a user to do as they please with a program, including viewing, running, configuring and setting permissions on this program.
 
 <br>
 <br>

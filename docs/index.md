@@ -52,7 +52,7 @@ Let's edit our program to make an API call using the requests library and return
 import requests
 
 def program(event):
-    url = "https://testapp.deribit.com/api/v2/public/get_index?currency=BTC"
+    url = "https://test.deribit.com/api/v2/public/get_index?currency=BTC"
     btc_price = requests.get(url).json()['result']['BTC']
     return {
         'current_btc_price': btc_price
@@ -91,7 +91,7 @@ class Input(fields.Schema):
     key = fields.Str('Database Key')
 
 def program(event):
-    url = "https://testapp.deribit.com/api/v2/public/get_index?currency=BTC"
+    url = "https://test.deribit.com/api/v2/public/get_index?currency=BTC"
     btc_price = requests.get(url).json()['result']['BTC']
     btc_prices.put(event.i.key, int(btc_price))
     return btc_prices.all()

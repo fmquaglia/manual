@@ -64,7 +64,7 @@ import requests
 from jinja2 import Template
 
 def program(event):
-    url = "https://testapp.deribit.com/api/v2/public/get_index?currency=BTC"
+    url = "https://test.deribit.com/api/v2/public/get_index?currency=BTC"
     btc_price = btc_price = requests.get(url).json()['result']['BTC']
     post_template = Template(markdown(open("post.md").read()))
     return HTML(post_template.render(data=btc_price))
