@@ -24,7 +24,7 @@ run --name Beverly --age 34 --likes_ramen true
 ```
 and hitting 'Enter'.
 
-The output panel on the right hand side of the console should log:
+The `CONSOLE` pane on the right hand side of the Studio should log:
 
 ```json
 {
@@ -66,13 +66,55 @@ Your output should look something like this (but with current information):
 
 ```json
 {
-    "current_btc_price": 7693.51
+    "current_btc_price": 8693.51
 }
 ```
 
+## Programs as Endpoints
+
+By default in DETA, every program is also an API with a unique URL. Go to the `VIEW` pane in the studio, which will make an authenticated GET request to the program's endpoint.
+
+In the URL pane, you will see the program's URL, following the format:
+
+`https://on.deta.dev/<here_is_the_prog_path>`
+
+In this case, hitting the endpoint with a GET request will return json just as running the program from the DETA Teletype did.
+
+```json
+{
+    "current_btc_price": 8845.89
+}
+```
+
+The endpoint is private by default, which can be seen by clicking the `INFO` tab and looking at the `API` value, which is `private`.
+
+If you try to open this endpoint in a new browser tab you will get:
+
+```json
+{
+    "message": "Unauthorized"
+}
+```
+
+Let's make this endpoint an open endpoint with a command in the DETA Teletype:
+
+```shell
+api open
+```
+A few seconds after the `API` value changes to `open`, hitting the URL in a new browser tab should return something like:
+
+```json
+{
+    "current_btc_price": 8840.99
+}
+```
+
+Congratulations--you have just created a functional API in DETA!
+
+
 ## Using the DETA library (deta.lib)
 
-DETA is bundled with a [library of services](./DETA_lib.md) that power up your programs out of the box. This library includes a schema for accepting outside arguments, database service, a file service, an RPC service for linking multiple DETA programs, a router for turning a DETA program into an API, an HTML rendering service, alongside email and SMS services.
+DETA is bundled with a [library of services](./DETA_lib.md) that power up your programs out of the box. This library includes a schema for accepting outside arguments, database service, a file service, an RPC service for linking multiple DETA programs, a router for routing API requests, an HTML rendering service, alongside email and SMS services.
 
 
 ### Storing Data
@@ -107,16 +149,17 @@ run --key first_price
 in the Teletype.
 
 
-Your output should look something like this (but with current information):
+The `CONSOLE` pane should look something like this (but with current information):
 
 ```json
 [
     {
         "key": "first_price",
-        "data": "7269"
+        "data": "8269"
     },
 ]
 ```
+
 
 ## Feedback
 
