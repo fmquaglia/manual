@@ -1,8 +1,10 @@
-# DETA Teletype Commands (Studio)
+# DETA Teletype Commands (Console)
 
+## Conventions
 User defined variable inputs are indicated between `<` and `>` symbols, as such: `<variable_name>`. 
 
 Specific examples of valid commands are indicated by `#`.
+
 
 ## Space Commands
 
@@ -29,17 +31,23 @@ open -s <space_name>
 ## Program Commands
 
 ### Listing Programs
+
+All programs in a space
 ```shell
 ls
+```
+
+Filter by group
+```shell
+ls <group_name>
+
+# ls group_one
 
 ls --group <group_name>
 
 # ls --group group_one
-
-ls <group_name>
-
-# ls group_one
 ```
+
 
 ### Creating a Program
 
@@ -56,18 +64,6 @@ Names can contain letters, digits, `-` and `_`. No spaces or other characters ar
 
 If the `--group` keyword is not specified, the program will be groupless.
 
-### Opening a Program
-
-```shell
-open <prog_name>
-
-# open prog_one
-
-open <group_name>/<program_name>
-
-# open group_one/prog_one
-```
-The path convention `<group_name>`/`<program_name>` is required if there is a conflict and there is not a groupless program named `<program_name>`.
 
 ### Changing the Group & Name of a Program
 
@@ -80,9 +76,6 @@ mv <group_name>/<program_name> <new_group_name>/<new_program_name>
 
 # mv group_one/prog_two group_one/prog_two
 ```
-Two programs of the same name cannot live in the same group.
-
-The path convention `<group_name>`/`<program_name>` is required if there is a conflict and there is not a groupless program named `<program_name>`.
 
 To refer to the groupless case, the `<group_name>` should be `root`.
 
@@ -92,40 +85,40 @@ To refer to the groupless case, the `<group_name>` should be `root`.
 # mv root/prog_one group_one/prog_one
 ```
 
-### Scheduling Program Execution
+Two programs of the same name cannot live in the same group.
 
-DETA's scheduler accepts cron expressions of length 6, with times in UTC.
-
-```shell
-cron <group_name>/<prog_name> <minute> <hour> <month_day> <week_day> <year>
-
-# cron group_one/prog_one 0 10 * * ? *
-```
-
-Rate based scheduling is also accepted.
+### Opening a Program
 
 ```shell
-cron <group_name>/<prog_name> <interval> <unit>
+open <prog_name>
 
-# cron group_one/prog_one 3 minutes
+# open prog_one
+
+open <group_name>/<program_name>
+
+# open <group_name>/<program_name>
 ```
+<br/>
 
-Rate based scheduling will execute a program every `interval` according to the `unit`. Accepted `unit` values are `minutes`, `hours`, `days`. If the `interval` is `1`, the singular of `minute`, `hour`, or `day` should be used.
-
-### Removing an Execution Schedule for a Program
-
-The execution schedule for a program can be removed with the `-r` flag.
-
-```shell
-cron -r <group_name>/<prog_name>
-
-# cron -r group_one/prog_one
-```
-
+For program commands `move` and `open`, `<group_name>/<program_name>` can be shortcut to `<program_name>` if there is no conflict or to refer to a groupless program of `<program_name>`.
 
 ## Commands Valid After a Program is Open
 
-### Creating Files
+### Running Programs
+
+```shell
+run <action> --<kwarg_name1> <kwarg_value1> --<kwarg_name2> <kwarg_value2>
+
+# run --name Beverly --age 99
+
+# run database_write --name Beverly --age 99
+```
+
+An action is optional argument which provides granular control over which block of code in `main.py` will run on command. By default when the `<action>` variable is ommited, the `app.run()` function in `main.py` will run.
+
+### Files
+
+#### Creatiing
 
 ```shell
 edit <file_name>
@@ -137,7 +130,7 @@ edit <file_name>
 
 Directories are not currently supported.
 
-### Opening Files
+#### Opening
 
 ```shell
 edit <file_name>
@@ -146,15 +139,13 @@ edit <file_name>
 ```
 
 
-### Mass Deploy
+#### Mass Deploy (all changed files)
 
 ```shell
 deploy
 ```
 
-Deploys all changes you have made to your files.
-
-### Selected Deploy
+#### Selected Deploy
 
 ```shell
 deploy <file_name_one> <file_name_two>
@@ -164,7 +155,7 @@ deploy <file_name_one> <file_name_two>
 
 Multiple file deploys are accepted, conditional on space separation.
 
-### Removing files
+#### Removing
 
 ```shell
 rm <file_name_one> <file_name_two>
@@ -174,96 +165,170 @@ rm <file_name_one> <file_name_two>
 
 Multiple file removals are accepted, conditional on space separation.
 
-### Changing Filenames
+#### Changing Filenames
 
 ```shell
 mv -fl <old_path_name> <new_path_name>
 
-# mv file.py calculator.py
+# mv -fl file.py calculator.py
 ```
-### Changing the Log Level
+
+### Program Specific Information
 
 ```shell
-set -log <level>
-
-rm -log
-
-# set -log debug
-
-# set -log off
-
-# rm -log
+meta
 ```
 
-The log level of a program indicates what should be recorded and cached (incoming requests, program responses, errors, logs).
-
-Currently valid levels are `debug` and `off`.
-
-Using `rm -log` will set the log level to `off`.
-
-### Changing API Permissions
+### Closing a Program
 
 ```shell
-api open
-
-api close
+close
 ```
 
-The status of a program's API can be found in the INFO panel.
+## Commands for Other Program-Specific Settings
 
-### Permissions
+Many settings belonging under DETA *programs*. The conventions for this case are:
 
-#### List Program Permissions
+```shell
+<set || rm> -<object_flag> <[flag specific args]>
+```
+
+These commands also require a program be open.
+
+### Execution Schedules
+
+DETA's scheduler accepts cron expressions of length 6, with times in UTC.
+
+#### Setting:
+```shell
+set -cron <minute> <hour> <month_day> <week_day> <year>
+
+# set -cron 0 10 * * ? *
+```
+
+Rate based scheduling is also accepted:
+
+```shell
+set -cron <interval> <unit>
+
+# set -cron 3 minutes
+```
+
+Rate based scheduling will execute a program every `interval` according to the `unit`. 
+
+Accepted `unit` values are `minutes`, `hours`, `days`. 
+
+If the `interval` is `1`, the singular of `minute`, `hour`, or `day` should be used.
+
+#### Removing:
+
+```shell
+
+rm -cron 
+```
+
+### APIs
+
+#### Public
+
+```shell
+set -api public
+```
+
+#### Private (default setting)
+
+```shell
+set -api private
+```
+
+An API's setting can be seen in the `INFO` tab of the Studio.
+
+### Program Specific Permissions
+
+#### Setting
+
+```shell
+set -perms --username_one <access_level> --username_two <access_level>
+
+# set -perms --beverly view --wesley run
+
+# set -perms --deta -full
+```
+As a *Space admin* or creator of a program, you can set user level permissions of a program.
+
+Accepted permissions are `view`, `run`, or `full`.
+
+#### Removing
+
+```shell
+rm -perms <username_one> <username_two>
+
+# rm -perms beverly wesley
+```
+Multiple users are accepted, conditional on space separation.
+
+#### Listing
 
 ```shell
 ls -perms
+
+# ls -perms
 ```
+A program's permission levels can be listed.
 
-#### Add User Permissions
+### Log Levels
 
-Permissions can be added to a program.
+A log level will cache information from incoming requests to a program, allowing this information to be easily seen, edited and replayed.
+
+####  Setting
 
 ```shell
-set -perms --<username> permission
+set -log debug
 
-# set -perms --beverly run
+set -log off
 ```
-Valid permission levels are `view`, `run`, and `full`.
 
-#### Remove User Permissions
+Current log levels are `debug` and `off`.
+
+A log-level of `debug` will cache incoming request types, payloads, and headers, which can be edited and replayed from the `CONSOLE` view of the `Studio`.
+
+#### Removing
 
 ```shell
-rm -perms --<username permission
-
-# rm -perms --beverly run
+rm -log
 ```
+
+Removing the log-level of a program is equivalent to setting it to `off`, caching no incoming data.
 
 ### Environment Variables
 
-#### Creation
+#### Setting:
 
 ```shell
-env set --<env_var_name> <env_var_val> --<env_var_name2> <env_var_value2>
+set -env --<env_var_name> <env_var_val> --<env_var_name2> <env_var_value2>
 
-# env set --my_api_key X2019WzT
+# set -envs --my_api_key X2019WzT
 ```
 
-#### Deletion
+#### Removing:
 
 ```shell
-env rm <env_var_name> <env_var_name2> 
+rm -env <env_var_name> <env_var_name2> 
 
-# env rm my_api_key
+# rm -envs my_api_key
 ```
 Environment variable names must start with a letter and can contain letters, digits and `_`. No spaces or other characters are allowed.
 
-### Running Programs
+
+### Changing a Program's DETA Library Version
 
 ```shell
-run --<kwarg_name1> <kwarg_value1> --<kwarg_name2> <kwarg_value2>
+set -lib <lib_version>
 
-# run --name Beverly --age 99
+# set -lib 10
 ```
+
+## Other Commands
 
 ### Package Installation
 
@@ -293,54 +358,19 @@ pip clean
 
 All packages can be removed with the clean command.
 
-### Execution Schedules
-
-An execution schedule can be set or removed for an open program, no path is necessary. Rate based expressions are also accepted.
+### Keybindings
 
 ```shell
-cron <minute> <hour> <month_day> <week_day> <year>
-cron <interval> <unit>
+set -bindings vim
 
-# cron 0/5 8-17 ? * MON-FRI *
-# cron 2 minutes
+set -bindings emacs
 ```
 
-The `-r` flag can also be used on an open program to remove an execution schedule.
+Vim and emacs keybindings can be added to and removed from the editor.
 
 ```shell
-
-cron -r
+rm -bindings
 ```
-
-### Program Specific Information
-
-```shell
-meta
-```
-
-### Vim Keybindings
-
-```shell
-vim
-```
-
-Vim keybindings can be added to the editor.
-
-### Changing a Program's DETA Library Version
-
-```shell
-lib use <lib_version>
-
-# lib use 4
-```
-
-### Closing a Program
-
-```shell
-close
-```
-
-## Other Commands
 
 ### Logout
 
