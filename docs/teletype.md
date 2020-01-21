@@ -1,32 +1,10 @@
-# DETA Teletype Commands (Console)
+# DETA Teletype Commands (Studio)
 
 ## Conventions
 User defined variable inputs are indicated between `<` and `>` symbols, as such: `<variable_name>`. 
 
 Specific examples of valid commands are indicated by `#`.
 
-
-## Space Commands
-
-### Listing Spaces
-```shell
-ls -s
-```
-
-### Creating a Space
-```shell
-new -s <space_name>
-
-# new -s space_one
-```
-
-### Opening a Space
-
-```shell
-open -s <space_name>
-
-# open -s space_one
-```
 
 ## Program Commands
 
