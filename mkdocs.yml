@@ -24,6 +24,7 @@ nav:
   - Getting Started: index.md
   - Concepts: concepts.md
   - Teletype Commands: teletype.md
+  - The DETA Router: DETA_router.md
   - The DETA Library & Resources: DETA_lib.md
   - Installing Packages: packages.md
   - Example Apps: examples.md

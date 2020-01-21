@@ -125,6 +125,14 @@ cron -r <group_name>/<prog_name>
 
 ## Commands Valid After a Program is Open
 
+### Running Programs
+
+```shell
+run --<kwarg_name1> <kwarg_value1> --<kwarg_name2> <kwarg_value2>
+
+# run --name Beverly --age 99
+```
+
 ### Creating Files
 
 ```shell
@@ -256,14 +264,6 @@ env rm <env_var_name> <env_var_name2>
 # env rm my_api_key
 ```
 Environment variable names must start with a letter and can contain letters, digits and `_`. No spaces or other characters are allowed.
-
-### Running Programs
-
-```shell
-run --<kwarg_name1> <kwarg_value1> --<kwarg_name2> <kwarg_value2>
-
-# run --name Beverly --age 99
-```
 
 ### Package Installation
 

@@ -49,9 +49,12 @@ Wait for the requests library to install.
 Let's edit our program to make an API call using the requests library and return some data. Change the code to:
 
 ```python
+from deta.lib import app
 import requests
 
-def program(event):
+
+@app.run()
+def run_handler(event):
     url = "https://test.deribit.com/api/v2/public/get_index?currency=BTC"
     btc_price = requests.get(url).json()['result']['BTC']
     return {
@@ -72,7 +75,32 @@ Your output should look something like this (but with current information):
 
 ## Programs as Endpoints
 
-By default in DETA, every program is also an API with a unique URL. Go to the `VIEW` pane in the studio, which will make an authenticated GET request to the program's endpoint.
+By default in DETA, every program is also an API with a unique URL.
+
+First modify the code to handle GET requests:
+
+```python
+from deta.lib import app
+import requests
+
+@app.run()
+def run_handler(event):
+    return price_fetcher()
+    
+@app.http("/", methods=["GET"])
+def get_handler(event):
+    return price_fetcher()
+
+def price_fetcher():
+    url = "https://test.deribit.com/api/v2/public/get_index?currency=BTC"
+    btc_price = requests.get(url).json()['result']['BTC']
+    return {
+        'current_btc_price': btc_price
+    }
+```
+And then type `deploy` again into the DETA Teletype. 
+
+Go to the `VIEW` pane in the studio, which will make an authenticated GET request to the program's endpoint.
 
 In the URL pane, you will see the program's URL, following the format:
 
@@ -114,7 +142,7 @@ Congratulations--you have just created a functional API in DETA!
 
 ## Using the DETA library (deta.lib)
 
-DETA is bundled with a [library of services](./DETA_lib.md) that power up your programs out of the box. This library includes a schema for accepting outside arguments, database service, a file service, an RPC service for linking multiple DETA programs, a router for routing API requests, an HTML rendering service, alongside email and SMS services.
+DETA is bundled with a [library of services](./DETA_lib.md) that power up your programs out of the box. This library includes a schema for accepting outside arguments, database service, a file service, an RPC service for linking multiple DETA programs, an email service, alongside HTML and JSON response types.
 
 
 ### Storing Data
@@ -124,19 +152,29 @@ Let's store our information into a database using the database service so that w
 Edit your code to import a database from [DETA.lib](./DETA_lib.md) and take a key under which we'll store the price in the database.
 
 ```python
-from deta.lib import fields, Database
+from deta.lib import app, fields, Database
 import requests
 
 btc_prices = Database()
 
-class Input(fields.Schema):
+class Keys(fields.Schema):
     key = fields.Str('Database Key')
 
-def program(event):
+@app.run(action="store_price", inp=Keys)
+def run_handler(event):
+    btc_prices.put(event.i.key, price_fetcher())
+    return btc_prices.all()
+    
+@app.http("/", methods=["GET"])
+def get_handler(event):
+    return btc_prices.get(event.params.get('key'))
+
+def price_fetcher():
     url = "https://test.deribit.com/api/v2/public/get_index?currency=BTC"
     btc_price = requests.get(url).json()['result']['BTC']
-    btc_prices.put(event.i.key, int(btc_price))
-    return btc_prices.all()
+    return str(btc_price)
+
+
 ```
 
 Then `deploy` your changes through the DETA Teletype. 
@@ -144,7 +182,7 @@ Then `deploy` your changes through the DETA Teletype.
 Upon a successful `changes were deployed` message, run:
 
 ```shell
-run --key first_price
+run store_price --key first_price
 ```
 in the Teletype.
 
@@ -160,6 +198,20 @@ The `CONSOLE` pane should look something like this (but with current information
 ]
 ```
 
+The `VIEW` pane should also expose your database to queries by query parameter.
+
+If you hit the endpoint with a request:
+
+`https://on.deta.dev/<prog_path>/?key=first_price`
+
+You should get a response:
+
+```json
+{
+        "key": "first_price",
+        "data": "8269"
+}
+```
 
 ## Feedback
 
