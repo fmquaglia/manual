@@ -208,8 +208,8 @@ def invoke_handler(event):
 ## Event Details
 
 All events, regardless of the `app` method have:
-- `event._raw` as the unchanged event
-- `event.body` the body of the event(a string)
+
+- `event.body` the body of the event (a string)
 
 ### app.run() & app.invoke()
 
@@ -240,8 +240,8 @@ All events, regardless of the `app` method have:
 - `event.path`: `str` the path of the resource in the request
 - `event.headers`: `dict` http headers  
 - `event.params`: `dict` the query string params
-- `event.content_type`: `str` the value in the header `Content-Type` in the request, is an empty strign if header not present
-- `event.isb64`: `bool` if body is base64 encoded, body is decoded by detalbi if is `True`
+- `event.content_type`: `str` the value in the header `Content-Type` in the request, is an empty string if header not present
+- `event.isb64`: `bool` if body is base64 encoded, body is decoded by the DETA library if is `True`
 
 #### Properties
 - `event.json` : `dict` json representation of the the event body
