@@ -208,7 +208,7 @@ def invoke_handler(event):
 ## Event Details
 
 All events, regardless of the `app` method have:
-- `event._raw` as the unchanged event(except the Authorization header)
+- `event._raw` as the unchanged event
 - `event.body` the body of the event(a string)
 
 ### app.run() & app.invoke()
