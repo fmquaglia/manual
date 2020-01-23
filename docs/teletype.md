@@ -226,7 +226,7 @@ An API's setting can be seen in the `INFO` tab of the Studio.
 #### Setting
 
 ```shell
-set -perms --username_one <access_level> --username_two <access_level>
+set -perms --<username_one> <access_level> --<username_two> <access_level>
 
 # set -perms --beverly view --wesley run
 
@@ -239,11 +239,10 @@ Accepted permissions are `view`, `run`, or `full`.
 #### Removing
 
 ```shell
-rm -perms <username_one> <username_two>
+rm -perms --<username_one> <access_level> --<username_two> <access_level>
 
-# rm -perms beverly wesley
+# rm -perms --beverly view --wesley run
 ```
-Multiple users are accepted, conditional on space separation.
 
 #### Listing
 
@@ -339,15 +338,13 @@ All packages can be removed with the clean command.
 ### Keybindings
 
 ```shell
-set -bindings vim
-
-set -bindings emacs
+vim
 ```
 
-Vim and emacs keybindings can be added to and removed from the editor.
+Vim keybindings can be added to and removed from the editor.
 
 ```shell
-rm -bindings
+vim
 ```
 
 ### Logout
