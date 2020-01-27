@@ -96,7 +96,8 @@ An action is optional argument which provides granular control over which block 
 
 ### Files
 
-#### Creatiing
+
+#### Creating Files
 
 ```shell
 edit <file_name>
