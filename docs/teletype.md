@@ -283,7 +283,7 @@ Removing the log-level of a program is equivalent to setting it to `off`, cachin
 #### Setting:
 
 ```shell
-set -env --<env_var_name> <env_var_val> --<env_var_name2> <env_var_value2>
+set -envs --<env_var_name> <env_var_val> --<env_var_name2> <env_var_value2>
 
 # set -envs --my_api_key X2019WzT
 ```
@@ -291,7 +291,7 @@ set -env --<env_var_name> <env_var_val> --<env_var_name2> <env_var_value2>
 #### Removing:
 
 ```shell
-rm -env <env_var_name> <env_var_name2> 
+rm -envs <env_var_name> <env_var_name2> 
 
 # rm -envs my_api_key
 ```
