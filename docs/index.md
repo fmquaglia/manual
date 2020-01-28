@@ -1,3 +1,7 @@
+*These docs are also available at:*
+
+<a href="https://manual.deta.sh/" target="_blank">https://manual.deta.sh/</a>
+
 # Getting Started
 
 Instructions on how to get started with DETA.

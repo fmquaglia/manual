@@ -12,6 +12,8 @@ theme:
   logo: '/images/logo.svg'
 markdown_extensions:
   - admonition
+  - toc:
+      permalink: true
   - codehilite
   - pymdownx.tilde
 extra:
