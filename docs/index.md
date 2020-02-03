@@ -131,7 +131,7 @@ If you try to open this endpoint in a new browser tab you will get:
 Let's make this endpoint an open endpoint with a command in the DETA Teletype:
 
 ```shell
-api open
+set -api public
 ```
 A few seconds after the `API` value changes to `open`, hitting the URL in a new browser tab should return something like:
 
