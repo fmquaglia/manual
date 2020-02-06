@@ -206,21 +206,21 @@ If the `interval` is `1`, the singular of `minute`, `hour`, or `day` should be u
 rm -cron 
 ```
 
-### APIs
+### HTTP routes
 
 #### Public
 
 ```shell
-set -api public
+set -http_auth off
 ```
 
 #### Private (default setting)
 
 ```shell
-set -api private
+set -http_auth on
 ```
 
-An API's setting can be seen in the `INFO` tab of the Studio.
+The HTTP auth setting can be seen in the `INFO` tab of the Studio, or in the `HTTP Auth` section of a program's settings menu.
 
 ### Program Specific Permissions
 
