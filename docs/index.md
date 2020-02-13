@@ -1,6 +1,6 @@
 *These docs are also available at:*
 
-<a href="https://manual.deta.sh/" target="_blank">https://manual.deta.sh/</a>
+<a href="https://manual.deta.sh/" target="_blank" rel="noreferrer noopener">https://manual.deta.sh/</a>
 
 # Getting Started
 
