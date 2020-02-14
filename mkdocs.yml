@@ -15,7 +15,7 @@ markdown_extensions:
   - toc:
       permalink: true
   - codehilite
-  - pymdownx.tilde
+
 extra:
   social:
     - type: 'home'
@@ -23,7 +23,9 @@ extra:
 extra_css:
   - css/extra.css
 nav:
-  - Getting Started: index.md
+  - Tutorial: Tutorial.md
+  - Resources:
+    - Database: database.md
   - Concepts: concepts.md
   - Teletype Commands: teletype.md
   - The DETA Router: DETA_router.md
