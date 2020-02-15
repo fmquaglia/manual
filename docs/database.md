@@ -1,8 +1,10 @@
-# Database
+!!! Note
+    Our `deta.lib` SDK is still work in progress and we will keep improving it in the coming weeks and months.
+    If there's a method or feature you _really_ need, send us an email.
 
 DETA offers a fully managed key-value store database that's great for storing all kinds of data needed for smaller programs.
 There's no limit on the number of databases you create/create or the amount of data stored.
-DETA Database is built on to of Dynamodb which means it's very reliable and highly scalable. Also you don't need to worry about security. Data and databases can only accessed by the program that created them. We will offer database sharing at some point in the future.
+DETA Database is built on to of DynamoDB which means it's very reliable and highly scalable. Also you don't need to worry about security. Data and databases can only accessed by the program that created them. We will offer database sharing at some point in the future.
 
 ## Using Database
 
@@ -15,7 +17,7 @@ from deta.lib import Database
 ```
 
 With DETA, Databases are created for you automatically when you start using them.
-To use a DB, simply "instantiate" it in the code:
+To use a DB, simply "instantiate" it in your code:
 
 
 ##### code
@@ -98,3 +100,11 @@ my_item = db.get("220te3")
 Retrieving an item with a key that does not exist will raise a **`KeyError`** exception.
 
 ### Delete
+
+`db.delete(key)` deletes an item from the database based on provided key.
+
+Deleting will not raise any errors, even if the key does not exist.
+
+### All
+
+`db.all()` returns a list of all items in the database.

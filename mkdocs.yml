@@ -23,12 +23,13 @@ extra:
 extra_css:
   - css/extra.css
 nav:
-  - Tutorial: Tutorial.md
+  - Tutorial: tutorial.md
   - Resources:
     - Database: database.md
-  - Concepts: concepts.md
-  - Teletype Commands: teletype.md
-  - The DETA Router: DETA_router.md
-  - The DETA Library & Resources: DETA_lib.md
-  - Installing Packages: packages.md
-  - Example Apps: examples.md
+    - Cloud Files: files.md
+  # - Concepts: concepts.md
+  # - Teletype Commands: teletype.md
+  # - The DETA Router: DETA_router.md
+  # - The DETA Library & Resources: DETA_lib.md
+  # - Installing Packages: packages.md
+  # - Example Apps: examples.md
