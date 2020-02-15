@@ -27,6 +27,17 @@ nav:
   - Resources:
     - Database: database.md
     - Cloud Files: files.md
+    - Email: email.md
+  - Triggers:
+    - Run (command line): run.md
+    - HTTP: http.md
+    - Cron: cron.md
+    - Invoke (call other programs): invoke.md
+  - Sharing Programs: sharing.md
+  - Debugging:
+    - Basic Debugging: basic.md
+    - Debug Mode: debug.md
+    - HTTP Client: client.md
   # - Concepts: concepts.md
   # - Teletype Commands: teletype.md
   # - The DETA Router: DETA_router.md

@@ -12,7 +12,7 @@ Members can create programs with full access to these programs.
 
 Admins have full access to every program in a space and can add members to a space.
 
-Guests and members can interact with a program accrding to their access level.
+Guests and members can interact with a program according to their access level.
 
 ##### Access Levels
 
@@ -53,7 +53,7 @@ Programs have access to resources.
 
 #### Resources
 
-Resources include an API, file storage, data storage, other programs, e-mail, and SMS.
+Resources include an API, file storage, data storage, other programs, e-mail.
 
 <br>
 <br>
