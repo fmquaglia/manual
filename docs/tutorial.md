@@ -75,7 +75,7 @@ As you can see, we send your keyword arguments as a JSON payload when invoking t
 ## 3) Updating the code
 
 Making changes to our program is really straight forward; just enter `deploy` into Teletype.
-Alternatively hit `cmd+s` or `ctr+s` when inside the editor.
+Alternatively hit <kbd>cmd+s</kbd> or <kbd>ctr+s</kbd> when inside the editor.
 
 Let's change our current program to accept to-do specific input:
 
