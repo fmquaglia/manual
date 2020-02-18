@@ -6,339 +6,173 @@ User defined variable inputs are indicated between `<` and `>` symbols, as such:
 Specific examples of valid commands are indicated by `#`.
 
 
-## Program Commands
+## Help
 
-### Listing Programs
+```ruby
+help
+```
 
-All programs in a space
-```shell
+## List programs
+
+List all programs:
+```ruby
 ls
 ```
 
-Filter by group
-```shell
+Filter by group:
+```ruby
 ls <group_name>
-
-# ls group_one
-
-ls --group <group_name>
-
-# ls --group group_one
 ```
 
+## Create programs
 
-### Creating a Program
-
-```shell
-new <program_name>
-
-# new prog_one
-
-new <program_name> --group <group_name>
-
-# new prog_one --group group_one
-```
 Names can contain letters, digits, `-` and `_`. No spaces or other characters are allowed.
 
-If the `--group` keyword is not specified, the program will be groupless.
+Create a program:
+```ruby
+new <program_name>
+```
 
+Optionally create a program in a group:
+```ruby
+new <program_name> --group <group_name>
+```
 
-### Changing the Group & Name of a Program
+## Rename programs
 
-```shell
+```ruby
 mv <program_name> <new_program_name>
+```
 
-# mv prog_one prog_two
+## Move a program to a different group
 
+```ruby
 mv <group_name>/<program_name> <new_group_name>/<new_program_name>
-
-# mv group_one/prog_two group_one/prog_two
 ```
 
-To refer to the groupless case, the `<group_name>` should be `root`.
+## Open programs
 
-```shell
-# mv group_one/prog_two root/prog_one
-
-# mv root/prog_one group_one/prog_one
-```
-
-Two programs of the same name cannot live in the same group.
-
-### Opening a Program
-
-```shell
+A program which does not belong to a group:
+```ruby
 open <prog_name>
+```
+A program which belongs to a group:
 
-# open prog_one
-
+```ruby
 open <group_name>/<program_name>
-
-# open <group_name>/<program_name>
 ```
-<br/>
+!!! Info
+    For program commands `move` and `open`, the `<group_name>/<program_name>` syntax can be shortcut to `<command> <program_name>` if the name is unique across the "Space".
 
-For program commands `move` and `open`, `<group_name>/<program_name>` can be shortcut to `<program_name>` if there is no conflict or to refer to a groupless program of `<program_name>`.
+## Run programs
 
-## Commands Valid After a Program is Open
+Refer to **[Run docs](use/run.md)** for more details.
 
-### Running Programs
+## Set environment variables (env vars)
 
-```shell
-run <action> --<kwarg_name1> <kwarg_value1> --<kwarg_name2> <kwarg_value2>
+Environment variable names must start with a letter and can contain letters, digits and `_`. No spaces or other characters are allowed.
 
-# run --name Beverly --age 99
-
-# run database_write --name Beverly --age 99
+```ruby
+set -envs --<env_var_name> <env_var_val> --<env_var_name2> <env_var_value2>
 ```
 
-An action is optional argument which provides granular control over which block of code in `main.py` will run on command. By default when the `<action>` variable is ommited, the `app.run()` function in `main.py` will run.
+Example
+```ruby
+set -envs --MY_API_KEY "very secret"
+```
 
-### Files
+## Remove (unset) environment variables (env vars)
 
+```ruby
+rm -envs <env_var_name> <env_var_name2> 
 
-#### Creating Files
+```
 
-```shell
+## Create and edit files
+
+the file will be created if it did not exist.
+
+```ruby
 edit <file_name>
-
-# edit main.py
-
-# edit post.md
 ```
-
 Directories are not currently supported.
 
-#### Opening
 
-```shell
-edit <file_name>
+## Deploy (all changed files)
 
-# edit main.py
-```
-
-
-#### Mass Deploy (all changed files)
-
-```shell
+```ruby
 deploy
 ```
 
-#### Selected Deploy
+## Deploy specific files
 
-```shell
+```ruby
 deploy <file_name_one> <file_name_two>
-
-# deploy main.py calculator.py
 ```
 
-Multiple file deploys are accepted, conditional on space separation.
+## Delete files
 
-#### Removing
-
-```shell
+```ruby
 rm <file_name_one> <file_name_two>
-
-# rm main.py calculator.py
 ```
 
-Multiple file removals are accepted, conditional on space separation.
+## Rename files
 
-#### Changing Filenames
-
-```shell
+```ruby
 mv -fl <old_path_name> <new_path_name>
-
-# mv -fl file.py calculator.py
 ```
+## Close programs
 
-### Program Specific Information
-
-```shell
-meta
-```
-
-### Closing a Program
-
-```shell
+```ruby
 close
 ```
 
-## Commands for Other Program-Specific Settings
+## Cron/Schedules
+[Read Cron docs.](use/cron.md)
 
-Many settings belonging under DETA *programs*. The conventions for this case are:
+## Enable public HTTP access 
+HTTP is private by default.
 
-```shell
-<set || rm> -<object_flag> <[flag specific args]>
-```
-
-These commands also require a program be open.
-
-### Execution Schedules
-
-DETA's scheduler accepts cron expressions of length 6, with times in UTC.
-
-#### Setting:
-```shell
-set -cron <minute> <hour> <month_day> <week_day> <year>
-
-# set -cron 0 10 * * ? *
-```
-
-Rate based scheduling is also accepted:
-
-```shell
-set -cron <interval> <unit>
-
-# set -cron 3 minutes
-```
-
-Rate based scheduling will execute a program every `interval` according to the `unit`. 
-
-Accepted `unit` values are `minutes`, `hours`, `days`. 
-
-If the `interval` is `1`, the singular of `minute`, `hour`, or `day` should be used.
-
-#### Removing:
-
-```shell
-
-rm -cron 
-```
-
-### HTTP routes
-
-#### Public
-
-```shell
+```ruby
 set -http_auth off
 ```
 
-#### Private (default setting)
+## Disable public HTTP access
+HTTP is private by default.
 
-```shell
+```ruby
 set -http_auth on
 ```
 
 The HTTP auth setting can be seen in the `INFO` tab of the Studio, or in the `HTTP Auth` section of a program's settings menu.
 
-### Program Specific Permissions
 
-#### Setting
+##  Enable "Debug Mode"
 
-```shell
-set -perms --<username_one> <access_level> --<username_two> <access_level>
+[Watch this video](debug.md) for more details.
 
-# set -perms --beverly view --wesley run
-
-# set -perms --deta -full
-```
-As a *Space admin* or creator of a program, you can set user level permissions of a program.
-
-Accepted permissions are `view`, `run`, or `full`.
-
-#### Removing
-
-```shell
-rm -perms --<username_one> <access_level> --<username_two> <access_level>
-
-# rm -perms --beverly view --wesley run
-```
-
-#### Listing
-
-```shell
-ls -perms
-
-# ls -perms
-```
-A program's permission levels can be listed.
-
-### Log Levels
-
-A log level will cache information from incoming requests to a program, allowing this information to be easily seen, edited and replayed.
-
-####  Setting
-
-```shell
+```ruby
 set -log debug
+```
 
+## Disable "Debug Mode"
+
+```ruby
 set -log off
 ```
 
-Current log levels are `debug` and `off`.
+## Change DETA SDK (`deta.lib`) Version
 
-A log-level of `debug` will cache incoming request types, payloads, and headers, which can be edited and replayed from the `CONSOLE` view of the `Studio`.
+Usually you don't need to do that manually.
 
-#### Removing
-
-```shell
-rm -log
-```
-
-Removing the log-level of a program is equivalent to setting it to `off`, caching no incoming data.
-
-### Environment Variables
-
-#### Setting:
-
-```shell
-set -envs --<env_var_name> <env_var_val> --<env_var_name2> <env_var_value2>
-
-# set -envs --my_api_key X2019WzT
-```
-
-#### Removing:
-
-```shell
-rm -envs <env_var_name> <env_var_name2> 
-
-# rm -envs my_api_key
-```
-Environment variable names must start with a letter and can contain letters, digits and `_`. No spaces or other characters are allowed.
-
-
-### Changing a Program's DETA Library Version
-
-```shell
+```ruby
 set -lib <lib_version>
-
-# set -lib 10
 ```
 
-## Other Commands
+## Toggle VIM keybindings
 
+Vim keybindings can be toggled using the following command.
 
-All packages can be removed with the clean command.
-
-### Keybindings
-
-```shell
+```ruby
 vim
 ```
-
-Vim keybindings can be added to and removed from the editor.
-
-```shell
-vim
-```
-
-### Logout
-
-
-```shell
-logout
-```
-
-### CLI Menu
-
-```shell
-help
-```
-
-
-## Feedback
-
-Need help, have questions, or want to give feedback?
-
-Please send us a note! hello `@` deta `.` sh
