@@ -15,6 +15,7 @@ markdown_extensions:
   - toc:
       permalink: true
   - codehilite
+  - pymdownx.inlinehilite
 
 extra:
   social:
@@ -25,12 +26,14 @@ extra_css:
 nav:
   - Overview (Video): overview.md
   - Tutorial (Getting Started): tutorial.md
-  - Using your programs: using.md
+  - Using your programs: 
+    - Teletype (CLI): use/run.md
+    - Schedule (cron): use/cron.md
+    - HTTP/Webhook: use/http.md
   - DETA SDK (deta.lib):
     - Run (command line): lib/run.md
     - HTTP: lib/http.md
     - Cron: lib/cron.md
-    - Invoke (call other programs): lib/invoke.md
     - Responses: lib/responses.md
   - Resources:
     - Database: resources/database.md
