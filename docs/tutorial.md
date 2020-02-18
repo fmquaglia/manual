@@ -311,3 +311,49 @@ run list
     }
 ]
 ```
+
+The keyword we provided after `run` – in this case it was `list` – is what we call a **Run Action**, it enables us to create powerful command line applications in a simple matter.
+
+Let add a piece of Python of to make our returned Tasks look nicer:
+
+```python
+def format_todos(todos):
+    rows = list()
+    for todo in todos:
+        key = todo["key"]
+        text = todo["data"]["text"]
+        urgent = " (Urgent)" if todo["data"]["urgent"] else ""
+        row = f"{key}: {text}{urgent}"
+        
+        rows.append(row)
+    return rows
+```
+
+And use it in our `todos_list` function:
+
+```python
+@app.run("list")
+def todos_list(event):
+    return format_todos(todos.all())
+```
+
+
+lets run list again:
+
+##### code
+```ruby
+run list
+```
+
+##### output
+```json
+[
+    "1: Do the dishes",
+    "2: Drink coffee (Urgent)",
+    "3: Go to sleep"
+]
+```
+
+<!-- Let's add some Python functions to auto generate the keys for us, so we don't have to provide them manually:
+
+Add this piece of code at the top of your program, after  -->
