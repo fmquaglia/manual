@@ -2,11 +2,11 @@
     Our `deta.lib` SDK is still work in progress and we will keep improving it in the coming weeks and months.
     If there's a method or feature you _really_ need, send us an email.
 
-DETA offers a fully managed key-value store database that's great for storing all kinds of data needed for smaller programs.
-There's no limit on the number of databases you create/create or the amount of data stored.
-DETA Database is built on to of DynamoDB which means it's very reliable and highly scalable. Also you don't need to worry about security. Data and databases can only accessed by the program that created them. We will offer database sharing at some point in the future.
+DETA offers a fully managed key-value store database for storing all kinds of data needed for smaller programs.
+There's no limit on the number of databases you can create or the amount of data stored.
+DETA Database is built on top of DynamoDB which means it's very reliable and highly scalable. The databases and the data can only be accessed by the program that created them. We will offer database sharing at some point in the future.
 
-## Using Database
+## Using the Database
 
 ### Import & instantiate
 
@@ -29,10 +29,10 @@ authors = Database("authors")  # create as many as you want
 
 ### Using the Database
 
-The `Database` instance offers a couple useful methods:
+The `Database` instance offers a couple of useful methods:
 #### Put
 
-`db.put(key, value)` Inserts a single item into the database. If the key already exists, then the **original value gets overridden**.
+`db.put(key, value)` Inserts a single item into the database. If the key already exists, then the **original value gets overwritten**.
 
 * `key`: must be a non-empty string. Examples: `"first"`, `"1"`, `"somerandomid"`
 * `value`: can be a non-empty `str`, an `int`, a `Decimal` (*no floats, in fact all numbers are stored as `Decimal`*), `boolean`, `None`; `list` and `dict` that contain any of the aforementioned primitive types. Nested lists and dicts are also supported.
@@ -73,7 +73,7 @@ def runner(event):
 
 `db.get(key)` retrieves an item from the database based on provided key.
 
-Retrieving the item with id `220te3` from our last example...
+Retrieving the item with id `220te3`...
 ##### Code
 ```python
 my_item = db.get("220te3")

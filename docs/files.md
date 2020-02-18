@@ -5,7 +5,7 @@
 
 Deta Cloud Files is a fully managed file and object storage service that comes handy when storing files in all sizes.
 
-To use DETA Cloud Files just import the `files` helper from `deta.lib`:
+To use DETA Cloud Files just import the `files` module from `deta.lib`:
 
 ```python
 from deta.lib import files
@@ -14,7 +14,7 @@ Then use it
 
 ### Put
 
-**`files.put(name, content)`**: store (or update? `fixme`) a text file or binary object.
+**`files.put(name, content)`**: stores/updates a text file or a binary object. If filename already exists, then the **previous file gets overwritten**, thus on simultaneous writes, all but the last write operation gets overwritten. 
 
 * **`name`** is the object's name, it must be a string.
 *  **`content`** is the object's content, it can be string, bytes or [file object](https://docs.python.org/3.7/library/io.html) **fixme, i need testing`
