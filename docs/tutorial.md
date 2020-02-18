@@ -354,6 +354,9 @@ run list
 ]
 ```
 
+TODO: Adding a delete function
+TODO: email reminder
+TODO: make available via http and API key
 <!-- Let's add some Python functions to auto generate the keys for us, so we don't have to provide them manually:
 
 Add this piece of code at the top of your program, after  -->

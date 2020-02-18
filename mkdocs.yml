@@ -24,24 +24,20 @@ extra_css:
   - css/extra.css
 nav:
   - Tutorial: tutorial.md
+  - Overview (Video): overview.md
   - Resources:
     - Database: database.md
     - Cloud Files: files.md
     - Email: email.md
     - The Runtime: runtime.md
-  - Triggers:
+  - Triggers: triggers.md
+  - DETA SDK (deta.lib):
     - Run (command line): run.md
     - HTTP: http.md
     - Cron: cron.md
     - Invoke (call other programs): invoke.md
-  - Sharing Programs: sharing.md
-  - Debugging:
-    - Basic Debugging: basic.md
-    - Debug Mode: debug.md
-    - HTTP Client: client.md
-  # - Concepts: concepts.md
-  # - Teletype Commands: teletype.md
-  # - The DETA Router: DETA_router.md
-  # - The DETA Library & Resources: DETA_lib.md
-  # - Installing Packages: packages.md
-  # - Example Apps: examples.md
+    - Responses: responses.md
+  - Sharing Programs (Video): sharing.md
+  - Debugging (Video): debug.md
+  - Installing Packages: packages.md
+  - Teletype Commands (CLI): teletype.md
