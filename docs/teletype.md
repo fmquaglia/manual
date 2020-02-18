@@ -308,31 +308,6 @@ set -lib <lib_version>
 
 ## Other Commands
 
-### Package Installation
-
-```shell
-pip install <package1_name> <package2_name>
-
-# pip install requests jinja2 ffmpeg markdown
-```
-
-Multiple packages can be installed, conditional on space separation.
-
-### Package Uninstallation
-
-```shell
-pip uninstall <package1_name> <package2_name>
-
-# pip uninstall requests jinja2
-```
-
-Multiple packages can be uninstalled, conditional on space separation.
-
-### Package Cleaning
-
-```shell
-pip clean
-```
 
 All packages can be removed with the clean command.
 
