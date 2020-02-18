@@ -1,6 +1,6 @@
 site_name: DETA Manual
-repo_name: 'deta/docs'
-repo_url: 'https://github.com/deta/docs'
+repo_name: 'deta/manual'
+repo_url: 'https://github.com/deta/manual'
 theme: 
   name: material
   palette:
@@ -23,21 +23,22 @@ extra:
 extra_css:
   - css/extra.css
 nav:
-  - Tutorial: tutorial.md
   - Overview (Video): overview.md
-  - Resources:
-    - Database: database.md
-    - Cloud Files: files.md
-    - Email: email.md
-    - The Runtime: runtime.md
-  - Triggers: triggers.md
+  - Tutorial (Getting Started): tutorial.md
+  - Using your programs: using.md
   - DETA SDK (deta.lib):
-    - Run (command line): run.md
-    - HTTP: http.md
-    - Cron: cron.md
-    - Invoke (call other programs): invoke.md
-    - Responses: responses.md
+    - Run (command line): lib/run.md
+    - HTTP: lib/http.md
+    - Cron: lib/cron.md
+    - Invoke (call other programs): lib/invoke.md
+    - Responses: lib/responses.md
+  - Resources:
+    - Database: resources/database.md
+    - Cloud Files: resources/files.md
+    - Email: resources/email.md
+    - The Runtime: resources/runtime.md
   - Sharing Programs (Video): sharing.md
   - Debugging (Video): debug.md
   - Installing Packages: packages.md
   - Teletype Commands (CLI): teletype.md
+  - Contact/Feedback: contact.md
