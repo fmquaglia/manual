@@ -1,16 +1,23 @@
-DETA allows you to schedule to program to run periodically. You have to methods of achieving tht:
+DETA allows you to schedule programs to run periodically, providing two ways of doing so: `rate` epressions and `cron` expressions.
 
-## Setting
+*To change the schedule settings of a program, the program needs to be open (`open myprog`) in the [(Studio)](https://web.deta.sh/studio), and you need to have a ['full' access permission](/permissions/).*
+
+
+
+## Setting a Schedule
 ### 1) Rate expression (simple)
 
 Rate based scheduling will execute a program every `interval` according to the `unit`. 
-Usage is straight forward, just follow this template:
+
+To set a program on a rate based execution schedule, follow this template:
 
 ```ruby
 set -cron <interval> <unit>
 ```
 
-The accepted unit values are **`minutes`**, **`hours`** and **`days`**; or **`minute`**, **`hour`** and **`day`** If the `interval` is `1`.
+*The accepted unit values are **`minutes`**, **`hours`** and **`days`**. If the `interval` is `1`, use **`minute`**, **`hour`** or **`day`** instead.*
+
+<br />
 
 **Command examples**
 ```ruby
@@ -20,6 +27,8 @@ set -cron 1 day
 ```ruby
 set -cron 30 minutes
 ```
+
+<br />
 
 ### 2) Cron expression (advanced)
 ```ruby
@@ -38,16 +47,16 @@ set -cron <minute> <hour> <month_day> <week_day> <year>
 * **`#!rb set -cron 0/10 * ? * MON-FRI *`**: Run every 10 minutes Monday through Friday
 * **`#!rb set -cron 0/5 8-17 ? * MON-FRI *`**: Run every 5 minutes Monday through Friday between 8:00 am and 5:55 pm (UTC)
 
-## Checking
+## Checking a Schedule
 
-To check the Schedule setting for a specific program, simply run:
+To check if a program is set to run on a schedule, simply run:
 
 ```ruby
 ls -cron
 ```
 
-## Removing
-To unschedule running a program, simply run:
+## Removing a Schedule
+To stop a program from executing on a schedule, simply run:
 
 ```ruby
 rm -cron 
