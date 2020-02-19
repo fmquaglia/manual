@@ -33,7 +33,7 @@ Running the program with an **action**:
 ```ruby
 run add
 ```
-*This corresponds the with [`@app.run("add")`](../../lib/run/) decorated function. (Notice the "add" action)*
+*This corresponds the with [`@app.run("add")`](/lib/run/) decorated function. (Notice the "add" action)*
 
 <br />
 
