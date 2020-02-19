@@ -60,7 +60,7 @@ The Dashboard's Teletype let's you run program without needing to `open` it. Jus
 <prog_name> <action> -<flag_one> --<kwarg_one> <kwarg_val_one>
 ```
 
-*The Teletype (Dash) lets you run programs where you have a ['run' or 'full' access permission](../../permissions/).*
+*The Teletype (Dash) lets you run programs where you have a ['run' or 'full' access permission](/permissions/).*
 
 <br />
 
