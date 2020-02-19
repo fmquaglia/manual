@@ -1,9 +1,9 @@
-Using an HTTP endpoint is a great way to connect your program to the outside world.
-For example if you want to trigger it from another service (Webhook) or use it as a simple API endpoint.
+Every DETA program has its own HTTP endpoint, which is a great way to connect your program to the outside world.
+You can trigger it from another service (i.e. via webhooks) or use it as a simple API endpoint.
 
 ## URL
 
-Each program gets it's ***unique*** URL, which you can find when you click on the **VIEW** tab on the right of the Studio.:
+You can a program's ***unique*** URL by clicking on the **VIEW** tab on the right within the [Studio](https://web.deta.sh/studio):
 
 ![Finding the URL of a program](/images/url.png)
 
@@ -14,15 +14,15 @@ The URL looks something like this: **`https://app.deta.sh/abcdefg/`**
 
 ## Authentication
 
-If you copy the URL of freshly created program and paste it into your your browser, you would get this message instead of the expected response: `#!json {"errors":["Unauthorized"]}`.
+If you copy the URL of freshly created program and paste it into your your browser, instead of the expected response, you will get this message: `#!json {"errors":["Unauthorized"]}`.
 
-For now there are 2 convenient ways to authorize HTTP access to your program:
+There are 2 ways to authorize HTTP access to your program outside of DETA:
 
 1. Public Access (where you could implement your own auth functionality if needed)
 2. API Keys
 
 
-**You can learn more about these 2 methods [here](sharing.md)**
+**You can learn more about these 2 methods [here](/permissions/).**
 
 ## Built-in HTTP client and Debugger
 
