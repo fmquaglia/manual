@@ -176,3 +176,17 @@ Vim keybindings can be toggled using the following command.
 ```ruby
 vim
 ```
+
+## Clear output
+
+Clear Teletype logs
+
+```ruby
+clear
+```
+
+Clear Teletype output
+
+```ruby
+clear -console
+```
