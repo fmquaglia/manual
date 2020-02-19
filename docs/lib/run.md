@@ -1,68 +1,36 @@
-To run your program from TeleType (the Command Line), you need to use the `app.run` decorator on the corresponding function.
-This is very useful to create command line applications and scripts that you can share with your team.
+**`app.run(action=None)`** takes one optional argument and executes the decorated functions following a [run command from Teletype](/use/run).
 
-**`app.run(action)`** takes one optional parameter:
+**Arguments**
 
-* `action`: `string` which enables a user to trigger different code blocks from the DETA Teletype.
+* `action`: `str` TODO
 
 
-##### code
+**Usage example:**
 
 ```python
 from deta.lib import app
 
 @app.run()
 def main_handler(event):
-    return "Welcome to Berlin"
+    return "Willkommen in Berlin."
+
+@app.run("kreuzberg")
+def main_handler(event):
+    return "Willkommen in Kreuzberg!"
+
+@app.run("steglitz")
+def main_handler(event):
+    return "Willkommen in Steglitz!"
 ```
 
-##### command
-```ruby
-run
-```
+**`event` attributes**
 
-##### response
-```json
-"Welcome to Berlin"
-```
+* `event.json`: `dict` provides the json payload as a Python dict.
+* `event.body`: `str`raw json payload.
+* `event.type`: `str` will be instantiated to `#!py "run"`.
+* `event.action`: `str` bears the action provided by the user or empty string if no action is provided.
 
-Having different functions you could trigger is a great feature. We can achieve that by defining a corresponding `action`:
+**Responses**
 
-
-##### code
-```python
-@app.run(action="kreuzberg")
-def kreuzberg_handler(event):
-    return "Welcome to Kreuzberg"
-
-@app.run(action="steglitz")
-def steglitz_handler(event):
-    return f"Welcome to Steglitz"
-```
-
-This program now will return different values from the DETA Teletype depending on the command:
-
-##### command
-```ruby
-run kreuzberg
-```
-##### response
-```json
-"Welcome to Kreuzberg"
-```
-
-##### command
-```ruby
-run steglitz
-```
-##### response
-```json
-"Welcome to Steglitz"
-```
-
-## `event` attributes
-
-**`event.json`**: provides the json payload as a Python dict.
-**`event.body`**: raw json payload.
-**`event.type`**: should be `"run"` when triggered using Teletype CLI.
-**`event.action`**: should bear the action provided by the user or empty string if no action is provided.
+* [Plain Text](TODO)
+* [JSON](TODO)
