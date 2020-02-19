@@ -161,7 +161,7 @@ set -log debug
 set -log off
 ```
 
-## Change DETA SDK (`deta.lib`) Version
+## Change DETA Library (`deta.lib`) Version
 
 Usually you don't need to do that manually.
 

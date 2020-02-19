@@ -32,5 +32,4 @@ def main_handler(event):
 
 **Responses**
 
-* [Plain Text](TODO)
-* [JSON](TODO)
+See [primitive responses](/lib/responses#primitive-responses).

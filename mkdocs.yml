@@ -30,7 +30,7 @@ nav:
     - Teletype (CLI): use/run.md
     - Schedule (cron): use/cron.md
     - HTTP/Webhook: use/http.md
-  - DETA SDK (deta.lib):
+  - DETA Library:
     - Run (Teletype): lib/run.md
     - HTTP: lib/http.md
     - Cron: lib/cron.md

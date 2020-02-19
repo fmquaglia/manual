@@ -1,5 +1,5 @@
 !!! Note
-    Our `deta.lib` SDK is still work in progress and we will keep improving it in the coming weeks and months.
+    DETA Library `deta.lib` is still work in progress and we will keep improving it in the coming weeks and months.
     If there's a method or feature you _really_ need, send us an email.
 
 DETA offers a fully managed key-value store database that's great for storing all kinds of data needed for smaller programs.
