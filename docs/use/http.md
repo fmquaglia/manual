@@ -22,7 +22,7 @@ There are 2 ways to authorize HTTP access to your program outside of DETA:
 2. API Keys
 
 
-**You can learn more about these 2 methods [here](/../../permissions/).**
+**You can learn more about these 2 methods [here](/permissions/).**
 
 ## Built-in HTTP client and Debugger
 
