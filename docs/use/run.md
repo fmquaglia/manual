@@ -24,7 +24,7 @@ Running the program:
 ```ruby
 run
 ```
-*This corresponds the with [`@app.run()`](../../lib/run/) decorated function. (Notice the lack of action)*
+*This corresponds the with [`@app.run()`](/lib/run/) decorated function. (Notice the lack of action)*
 
 <br />
 
