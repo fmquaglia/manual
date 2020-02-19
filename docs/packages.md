@@ -2,6 +2,9 @@ Installing packages via pip is currently possible in DETA.
 
 However, the DETA package manager is under heavy development and performance has room for improvement. Some Packages with **C** dependencies might fail. If that happens, **please [contact us](contact.md)** to patch our installer.
 
+!!! important
+    using 3rd-party packages will cause the startup time to degrade. Expect additional 5 seconds with each cold start. We are working on a fix.
+
 A program's installed packages can be viewed in the "**INFO**" pane under `deps` at the bottom of the DETA console.
 
 

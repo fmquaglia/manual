@@ -24,8 +24,9 @@ extra:
 extra_css:
   - css/extra.css
 nav:
+  - Getting Started: index.md
   - Overview (Video): overview.md
-  - Tutorial (Getting Started): tutorial.md
+  # - Tutorial (Getting Started): tutorial.md
   - Using your programs: 
     - Teletype (CLI): use/run.md
     - Schedule (cron): use/cron.md
@@ -41,7 +42,7 @@ nav:
     - Email: resources/email.md
     - The Runtime: resources/runtime.md
   - Permissions (Video): permissions.md
-  - Debugging (Video): debug.md
+  # - Debugging (Video): debug.md
   - Installing Packages: packages.md
   - Teletype Commands (CLI): teletype.md
   - Contact/Feedback: contact.md
