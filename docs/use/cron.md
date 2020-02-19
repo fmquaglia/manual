@@ -1,6 +1,6 @@
 DETA allows you to schedule programs to run periodically, providing two ways of doing so: `rate` epressions and `cron` expressions.
 
-*To change the schedule settings of a program, the program needs to be open (`open myprog`) in the [(Studio)](https://web.deta.sh/studio), and you need to have a ['full' access permission](../../permissions/).*
+*To change the schedule settings of a program, the program needs to be open (`open myprog`) in the [(Studio)](https://web.deta.sh/studio), and you need to have a ['full' access permission](/permissions/).*
 
 
 
