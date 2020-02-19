@@ -15,7 +15,7 @@ To set a program on a rate based execution schedule, follow this template:
 set -cron <interval> <unit>
 ```
 
-*The accepted unit values are **`minutes`**, **`hours`** and **`days`**. If the `interval` is `1`, use **`minute`**, **`hour`** or **`day`**.*
+*The accepted unit values are **`minutes`**, **`hours`** and **`days`**. If the `interval` is `1`, use **`minute`**, **`hour`** or **`day`** instead.*
 
 <br />
 
