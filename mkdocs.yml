@@ -1,6 +1,6 @@
 site_name: DETA Manual
-repo_name: 'deta/docs'
-repo_url: 'https://github.com/deta/docs'
+repo_name: 'deta/manual'
+repo_url: 'https://github.com/deta/manual'
 theme: 
   name: material
   palette:
@@ -15,7 +15,8 @@ markdown_extensions:
   - toc:
       permalink: true
   - codehilite
-  - pymdownx.tilde
+  - pymdownx.inlinehilite
+
 extra:
   social:
     - type: 'home'
@@ -24,9 +25,25 @@ extra_css:
   - css/extra.css
 nav:
   - Getting Started: index.md
-  - Concepts: concepts.md
-  - Teletype Commands: teletype.md
-  - The DETA Router: DETA_router.md
-  - The DETA Library & Resources: DETA_lib.md
+  # - Overview (Video): overview.md
+  # - Tutorial (Getting Started): tutorial.md
+  - Using your programs: 
+    - Teletype (CLI): use/run.md
+    - Schedule (cron): use/cron.md
+    - HTTP / Webhook: use/http.md
+  - DETA Library:
+    - Run (Teletype): lib/run.md
+    - HTTP: lib/http.md
+    - Cron: lib/cron.md
+    - Responses: lib/responses.md
+  - Resources:
+    - Database: resources/database.md
+    - Cloud Files: resources/files.md
+    - Email: resources/email.md
+    - The Runtime: resources/runtime.md
+  - User Permissions: permissions.md
+  - Authentication: auth.md
+  # - Debugging (Video): debug.md
   - Installing Packages: packages.md
-  - Example Apps: examples.md
+  - Teletype Commands (CLI): teletype.md
+  - Contact/Feedback: contact.md

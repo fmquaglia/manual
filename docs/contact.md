@@ -1,0 +1,1 @@
+Contact and feedback: [team@deta.sh](team@deta.sh)
