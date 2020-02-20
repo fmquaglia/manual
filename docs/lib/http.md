@@ -1,9 +1,5 @@
 
-<<<<<<< HEAD
 DETA SDK provides a small Flask-inspired http router.
-=======
-DETA Library provides a small web http router very similar to the one provided by Flask.
->>>>>>> 2020-docs
 
 
 **`app.http(route, methods=None)`** takes two arguments which specify the decorated function to execute following an [HTTP request](/use/http).

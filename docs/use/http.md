@@ -10,7 +10,7 @@ You can a program's ***unique*** URL by clicking on the **VIEW** tab on the righ
 The URL looks something like this: **`https://app.deta.sh/abcdefg/`**
 
 ## Routing
-[Please visit the Router docs](/lib/http.md)
+[Please visit the Router docs](/lib/http/)
 
 ## Authentication
 
