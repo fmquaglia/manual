@@ -70,5 +70,4 @@ prog_name kreuzberg
 
 **Responses**
 
-* [Plain Text](TODO)
-* [JSON](TODO)
+See [primitive responses](/lib/responses#primitive-responses).

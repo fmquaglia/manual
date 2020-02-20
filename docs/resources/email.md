@@ -1,8 +1,15 @@
-DETA programs have their own unique email address, from which they can send emails (and soon also receive emails). Only plain text emails can be sent at the moment.
+DETA programs have their own unique email address. They can currently send plain text emails (soon they'll also be able to receive email).
 
-**`email(to, subject, message)`** send an email.
+To use DETA Email, just import the `email` helper from `deta.lib`:
 
-* **`to`**: an email address (`str`) or a `list` of recipients.
+```python
+from deta.lib import email
+```
+Then use the command below.
+
+**`email(to, subject, message)`** to send an email.
+
+* **`to`** an email address (`str`) or a `list` of recipients.
 * **`subject`** the subject line (`str`).
 * **`message`** the email's body (`str`).
 
@@ -12,5 +19,5 @@ DETA programs have their own unique email address, from which they can send emai
 from deta.lib import app, email
 
 email("ludwig@example.com", "Happy Birthday!", "Dear Ludwig,...")
-email(["joe@example.com", "alex@example.com"], "January update", "Hell team, ..")
+email(["beverly@example.com", "wesley@example.com"], "January Update", "Hello team, ..")
 ```
