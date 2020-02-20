@@ -12,6 +12,11 @@ DETA SDK provides a small Flask-inspired http router.
     * Defaults to all the standard HTTP methods. 
     * Example: `#!py ["GET", "PUT"]`.
 
+
+**Responses**
+
+Refer to [Responses docs](/lib/responses).
+
 <br />
 
 **Usage Example**
@@ -24,15 +29,47 @@ def get_handler(event):
     name = event.params.get("name")
     return {"greeting": f"Hallo, {name}!"}
 
-@app.http("/steglitzer/", methods=["POST"])
+@app.http("/kiez/", methods=["POST"])
 def post_handler(event):
     kiez = event.json.get("kiez")
     return f"Your favorite Kiez in Berlin is {kiez}."
 ```
 
-**Responses**
+<br />
 
-Refer to [Responses docs](/lib/responses).
+**Request-Response Pairs**
+
+*Request*
+```shell
+GET app.deta.sh/<prog_path>/?name=Beverly
+```
+
+*Response*
+```json
+{"greeting": "Hallo, Beverly!"}
+```
+
+<br />
+
+*Request*
+```shell
+POST app.deta.sh/<prog_path>/kiez/
+```
+
+
+with payload:
+```json
+{
+    "kiez": "Akazienkiez"
+}
+```
+
+*Response*
+```json
+"Your favorite kiez in Berlin is Akazienkiez."
+```
+
+<br />
 
 **`event ` attributes**
 

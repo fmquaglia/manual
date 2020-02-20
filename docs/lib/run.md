@@ -27,34 +27,34 @@ def main_handler(event):
 
 <br />
 
-##### Command (Teletype Studio)
+**Command (Teletype Studio)**
 ```ruby
 run
 ```
 
-##### Command (Teletype Dash)
+**Command (Teletype Dash)**
 ```ruby
 prog_name
 ```
 
-##### Response
+**Response**
 ```python
 "Wilkommen in Berlin!"
 ```
 
 <br />
 
-##### Command (Teletype Studio)
+**Command (Teletype Studio)**
 ```ruby
 run kreuzberg
 ```
 
-##### Command (Teletype Dash)
+**Command (Teletype Dash)**
 ```ruby
 prog_name kreuzberg
 ```
 
-##### Response
+**Response**
 ```python
 "Wilkommen in Kreuzberg!"
 ```
