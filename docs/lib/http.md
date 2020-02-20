@@ -1,5 +1,5 @@
 
-DETA SDK provides a small web http router very similar to the one provided by Flask.
+DETA Library provides a small web http router very similar to the one provided by Flask.
 
 
 **`app.http(route, methods=None)`** takes two arguments and execute the decorated functions following a corresponding [HTTP request](/use/http).
@@ -27,7 +27,7 @@ def post_handler(event):
 
 **Responses**
 
-TODO
+Refer to [Responses docs](/lib/responses).
 
 **`event ` attributes**
 

@@ -161,7 +161,7 @@ set -log debug
 set -log off
 ```
 
-## Change DETA SDK (`deta.lib`) Version
+## Change DETA Library (`deta.lib`) Version
 
 Usually you don't need to do that manually.
 
@@ -175,4 +175,18 @@ Vim keybindings can be toggled using the following command.
 
 ```ruby
 vim
+```
+
+## Clear output
+
+Clear Teletype logs
+
+```ruby
+clear
+```
+
+Clear Teletype output
+
+```ruby
+clear -console
 ```

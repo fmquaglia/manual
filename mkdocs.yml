@@ -24,13 +24,14 @@ extra:
 extra_css:
   - css/extra.css
 nav:
-  - Overview (Video): overview.md
-  - Tutorial (Getting Started): tutorial.md
+  - Getting Started: index.md
+  # - Overview (Video): overview.md
+  # - Tutorial (Getting Started): tutorial.md
   - Using your programs: 
     - Teletype (CLI): use/run.md
     - Schedule (cron): use/cron.md
     - HTTP / Webhook: use/http.md
-  - DETA SDK (deta.lib):
+  - DETA Library:
     - Run (Teletype): lib/run.md
     - HTTP: lib/http.md
     - Cron: lib/cron.md
@@ -40,8 +41,9 @@ nav:
     - Cloud Files: resources/files.md
     - Email: resources/email.md
     - The Runtime: resources/runtime.md
-  - Permissions (Video): permissions.md
-  - Debugging (Video): debug.md
+  - User Permissions: permissions.md
+  - Authentication: auth.md
+  # - Debugging (Video): debug.md
   - Installing Packages: packages.md
   - Teletype Commands (CLI): teletype.md
   - Contact/Feedback: contact.md
