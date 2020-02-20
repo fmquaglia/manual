@@ -1,14 +1,15 @@
 !!! Note
-    DETA Library `deta.lib` is still work in progress and we will keep improving it in the coming weeks and months.
-    If there's a method or feature you _really_ need, send us an email.
+    Our `deta.lib` SDK is still work in progress and we will keep improving it in near future.
+    If there's a method or feature you'd like, send us an email.
 
 DETA offers a fully managed key-value store database that's great for storing all kinds of data needed for smaller programs.
-There's no limit on the number of databases you create/create or the amount of data stored.
-DETA Database is built on to of DynamoDB which means it's very reliable and highly scalable. Also you don't need to worry about security. Data and databases can only accessed by the program that created them. We will offer database sharing at some point in the future.
+There's no limit on the number of databases you create or the amount of data stored.
+
+DETA's Database is built on top of DynamoDB which means it's very reliable and highly scalable. Database is also secure; DETA ensures data and databases can only accessed by the program that created them. We plan to offer database sharing at some point in the future.
 
 ## Using Database
 
-### Import & instantiate
+### Importing & Instantiating
 
 First import the `Database` class from `deta.lib`:
 
@@ -16,26 +17,37 @@ First import the `Database` class from `deta.lib`:
 from deta.lib import Database
 ```
 
+<br />
+
 With DETA, Databases are created for you automatically when you start using them.
 To use a DB, simply "instantiate" it in your code:
 
 
-##### code
+##### Code
 ```python
 db = Database()  # the default DB
 books = Database("books")  # you can create named DBs
 authors = Database("authors")  # create as many as you want
 ```
+<br />
 
 ### Using the Database
 
-The `Database` instance offers a couple useful methods:
+The `Database` instance offers a few useful methods:
+
 #### Put
 
 `db.put(key, value)` Inserts a single item into the database. If the key already exists, then the **original value gets overridden**.
 
-* `key`: must be a non-empty string. Examples: `"first"`, `"1"`, `"somerandomid"`
-* `value`: can be a non-empty `str`, an `int`, a `Decimal` (*no floats, in fact all numbers are stored as `Decimal`*), `boolean`, `None`; `list` and `dict` that contain any of the aforementioned primitive types. Nested lists and dicts are also supported.
+* `key`: must be a non-empty string. 
+    * Examples: `"first"`, `"1"`, `"somerandomid"`
+* `value`: can be 
+    * `str` (*non-empty*)
+    * `int`
+    * `Decimal` (*no floats, in fact all numbers are stored as `Decimal`*)
+    * `boolean`
+    * `None`
+    * `list` and `dict` that contain any of the aforementioned primitive types (nested lists and dicts are also supported).
 
 
 ##### Code
@@ -58,7 +70,7 @@ def runner(event):
     db.put("g", False)
     db.put("h", True)
     db.put("i", {})
-    db.put("j", [1,2,3, "hello", {"nested": [8487637843,53645]}])
+    db.put("j", [1, 2, 3, "hello", {"nested": [8487637843, 53645]}])
     db.put("k", {"height": Decimal(80)})
 
     # Not valid:
@@ -68,15 +80,16 @@ def runner(event):
     # db.put("b", 1.4) # no float as value -- use Decimal instead
 ```
 
-#### Get
+<br />
 
+#### Get
 
 `db.get(key)` retrieves an item from the database based on provided key.
 
-Retrieving the item with id `220te3` from our last example...
+Retrieving the item with id `j` from our last example...
 ##### Code
 ```python
-my_item = db.get("220te3")
+my_item = db.get("j")
 ```
 
 ... will come back with following data:
@@ -99,12 +112,16 @@ my_item = db.get("220te3")
 
 Retrieving an item with a key that does not exist will raise a **`KeyError`** exception.
 
-### Delete
+<br />
+
+#### Delete
 
 `db.delete(key)` deletes an item from the database based on provided key.
 
 Deleting will not raise any errors, even if the key does not exist.
 
-### All
+<br />
+
+#### All
 
 `db.all()` returns a list of all items in the database.
