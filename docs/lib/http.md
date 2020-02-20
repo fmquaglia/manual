@@ -1,13 +1,18 @@
 
-DETA SDK provides a small web http router very similar to the one provided by Flask.
+DETA SDK provides a small Flask-inspired http router.
 
 
-**`app.http(route, methods=None)`** takes two arguments and execute the decorated functions following a corresponding [HTTP request](/use/http).
+**`app.http(route, methods=None)`** takes two arguments which specify the decorated function to execute following an [HTTP request](/use/http).
 
 **Arguments**
 
-* `route`: *required*, `str` specifies the path for a corresponding HTTP request. Examples: `#!py "/"`, `#!py "/hello"`.
-* `methods`: `list` a list of HTTP methods which could trigger the function. Default is all the standard HTTP methods. Example: `#!py ["GET", "PUT"]`.
+* `route`: `str` which specifies the path for a corresponding HTTP request. Examples: `#!py "/"`, `#!py "/hello"`. 
+    * This argument is *required*.
+* `methods`: `list` of HTTP methods which can trigger the function. 
+    * Defaults to all the standard HTTP methods. 
+    * Example: `#!py ["GET", "PUT"]`.
+
+<br />
 
 **Usage Example**
 

@@ -1,9 +1,11 @@
-**`app.run(action=None)`** takes one optional argument and executes the decorated functions following a [run command from Teletype](/use/run).
+**`app.run(action=None)`** is used to execute code following a [run command from Teletype](/use/run). It takes one optional argument which specifies which decorated function to execute.
 
 **Arguments**
 
-* `action`: `str` TODO
+* `action`: `str` indicates which **`app.run()`** function to execute.
 
+
+<br />
 
 **Usage example:**
 
@@ -23,12 +25,48 @@ def main_handler(event):
     return "Willkommen in Steglitz!"
 ```
 
+<br />
+
+##### Command (Teletype Studio)
+```ruby
+run
+```
+
+##### Command (Teletype Dash)
+```ruby
+prog_name
+```
+
+##### Response
+```python
+"Wilkommen in Berlin!"
+```
+
+<br />
+
+##### Command (Teletype Studio)
+```ruby
+run kreuzberg
+```
+
+##### Command (Teletype Dash)
+```ruby
+prog_name kreuzberg
+```
+
+##### Response
+```python
+"Wilkommen in Kreuzberg!"
+```
+
+<br />
+
 **`event` attributes**
 
 * `event.json`: `dict` provides the json payload as a Python dict.
-* `event.body`: `str`raw json payload.
+* `event.body`: `str` provides the raw json payload.
 * `event.type`: `str` will be instantiated to `#!py "run"`.
-* `event.action`: `str` bears the action provided by the user or empty string if no action is provided.
+* `event.action`: `str` bears the action provided by the user or an empty string if no action is provided.
 
 **Responses**
 
