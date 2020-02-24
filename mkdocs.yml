@@ -44,6 +44,6 @@ nav:
   - User Permissions: permissions.md
   - Authentication: auth.md
   # - Debugging (Video): debug.md
-  - Installing Packages: packages.md
+  # - Installing Packages: packages.md
   - Teletype Commands (CLI): teletype.md
   - Contact/Feedback: contact.md
