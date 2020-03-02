@@ -43,6 +43,7 @@ nav:
     - The Runtime: resources/runtime.md
   - User Permissions: permissions.md
   - Authentication: auth.md
+  - Debugging: debug.md
   # - Debugging (Video): debug.md
   # - Installing Packages: packages.md
   - Teletype Commands (CLI): teletype.md
