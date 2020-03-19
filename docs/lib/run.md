@@ -1,8 +1,12 @@
-**`app.run(action=None)`** is used to execute code following a [run command from Teletype](/use/run). It takes one optional argument which specifies which decorated function to execute.
+**`app.lib.run(action=None)`** is used to execute code following a [run command from Teletype](/use/run). It takes one optional argument which specifies which decorated function to execute.
+
+!!! Note
+    From DETA lib version `21` the convention is `app.lib.run`. 
+    For all earlier lib versions the convention is `app.run`. You can find a program's lib version by the `deta.lib` field in the `INFO` tab.
 
 **Arguments**
 
-* `action`: `str` indicates which **`app.run()`** function to execute.
+* `action`: `str` indicates which **`app.lib.run()`** function to execute.
 
 
 <br />
@@ -12,15 +16,15 @@
 ```python
 from deta.lib import app
 
-@app.run()
+@app.lib.run()
 def main_handler(event):
     return "Willkommen in Berlin."
 
-@app.run("kreuzberg")
+@app.lib.run("kreuzberg")
 def main_handler(event):
     return "Willkommen in Kreuzberg!"
 
-@app.run("steglitz")
+@app.lib.run("steglitz")
 def main_handler(event):
     return "Willkommen in Steglitz!"
 ```
