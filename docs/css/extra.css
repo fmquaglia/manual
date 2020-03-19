@@ -17,6 +17,11 @@ and background color
     .md-nav--primary, .md-nav__title--site, .md-nav__source {
         background-color: #252D34 !important;
     }
+
+    .md-nav__title {
+        color: #fff !important;
+        background-color: #242c33d8 !important;
+    }
 }
 
 

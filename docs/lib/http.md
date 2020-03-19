@@ -1,8 +1,12 @@
 
-DETA SDK provides a small Flask-inspired http router.
+The DETA library provides a small Flask-inspired http router. For a more complete http router, consider installing [an external framework in your DETA program](/packages) such as [starlette](https://www.starlette.io/) or [FastAPI](https://fastapi.tiangolo.com/).
 
 
-**`app.http(route, methods=None)`** takes two arguments which specify the decorated function to execute following an [HTTP request](/use/http).
+**`app.lib.http(route, methods=None)`** takes two arguments which specify the decorated function to execute following an [HTTP request](/use/http).
+
+!!! Note
+    From DETA lib version `21` the convention is `app.lib.http`. 
+    For all earlier lib versions the convention is `app.http`. You can find a program's lib version by the `deta.lib` field in the `INFO` tab.
 
 **Arguments**
 
@@ -11,7 +15,6 @@ DETA SDK provides a small Flask-inspired http router.
 * `methods`: `list` of HTTP methods which can trigger the function. 
     * Defaults to all the standard HTTP methods. 
     * Example: `#!py ["GET", "PUT"]`.
-
 
 **Responses**
 
