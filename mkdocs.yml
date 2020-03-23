@@ -41,10 +41,9 @@ nav:
     - Cloud Files: resources/files.md
     - Email: resources/email.md
     - The Runtime: resources/runtime.md
+  - Installing Packages: packages.md
   - User Permissions: permissions.md
   - Authentication: auth.md
   - Debugging: debug.md
-  # - Debugging (Video): debug.md
-  # - Installing Packages: packages.md
   - Teletype Commands (CLI): teletype.md
   - Contact/Feedback: contact.md

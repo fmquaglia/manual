@@ -1,6 +1,6 @@
-Installing packages via pip is currently possible in DETA.
+Installing and uninstalling packages via pip is currently possible in DETA.
 
-However, the DETA package manager is under heavy development and performance has room for improvement. Some Packages with **C** dependencies might fail. If that happens, **please [contact us](contact.md)** to patch our installer.
+To run a pip command in DETA simply type `pip <pip_command>` into the DETA Studio Teletype after opening a DETA program.
 
 A program's installed packages can be viewed in the "**INFO**" pane under `deps` at the bottom of the DETA console.
 

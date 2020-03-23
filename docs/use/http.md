@@ -26,7 +26,7 @@ There are 2 ways to authorize HTTP access to your program outside of DETA:
 
 ## Built-in HTTP client and Debugger
 
-[Watch this video](debug.md) for instruction on how to use the built-in HTTP client and real-time debugger.
+[Watch this video](/debug/) for instruction on how to use the built-in HTTP client and real-time debugger.
 
 !!! info
     We're working on OAuth based access. We will let you know when it's been released.
