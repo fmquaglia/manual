@@ -70,7 +70,8 @@ def handler(event):
 
 ### Getting FastAPI docs working:
 
-Add your program path when you instantial a `FastAPI`app:
+Add your program path when you instantiate a **FastAPI** app:
+
 
 example:
 
@@ -80,7 +81,7 @@ app = FastAPI(openapi_prefix="/rzzj7f2jw5ih")
 
 ### Running Django
 
-We suggest you use a minimal Django setup to reduce unnecessary file bulk -- following is a minimal Django app that runs inside DETA:
+We suggest you use a minimal Django setup to reduce unnecessary file bulk -- below is a minimal Django app that runs inside DETA:
 
 ```python
 import sys
@@ -107,5 +108,5 @@ app = get_wsgi_application()
 ### Things to note
 
 - As you can see we expect an `app` object in `main.py`.
-- We take care of forwarding HTTP requests to oyu -- no servers, sockets or ports to listen to.
-- The file system is read-only except `/tmp`, to which you could write data but it ephemeral and not consistant across API calls. 
+- We take care of forwarding HTTP requests to you -- no servers, sockets, or ports to listen to.
+- The file system is read-only except /tmp, to which you can write data but it's ephemeral and not consistent across API calls.
