@@ -46,4 +46,5 @@ nav:
   - Authentication: auth.md
   - Debugging: debug.md
   - Teletype Commands (CLI): teletype.md
+  - Web Frameworks: web_frameworks.md
   - Contact/Feedback: contact.md

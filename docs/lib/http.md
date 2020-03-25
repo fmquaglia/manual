@@ -1,5 +1,5 @@
 
-The DETA library provides a small Flask-inspired http router. For a more complete http router, consider installing [an external framework in your DETA program](/packages) such as [starlette](https://www.starlette.io/) or [FastAPI](https://fastapi.tiangolo.com/).
+The DETA library provides a small Flask-inspired http router. For a more complete http router, consider using [an external framework in your DETA program](/web_frameworks/) such as [starlette](https://www.starlette.io/), [FastAPI](https://fastapi.tiangolo.com/), [Flask](https://palletsprojects.com/p/flask/), or [Django](https://www.djangoproject.com/).
 
 
 **`app.lib.http(route, methods=None)`** takes two arguments which specify the decorated function to execute following an [HTTP request](/use/http).
