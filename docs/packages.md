@@ -5,28 +5,39 @@ To run a pip command in DETA simply type `pip <pip_command>` into the DETA Studi
 A program's installed packages can be viewed in the "**INFO**" pane under `deps` at the bottom of the DETA console.
 
 
-## Install Packages
+## Installing Packages
 
-Command pattern:
+Multiple packages can be installed by separating their names with a space. 
 
-```ruby
-pip install <package1_name> <package2_name>
-```
+You can also provide the exact version to be installed -- see the example below.
 
-Multiple packages can be installed by separating their names with a space. You could also provide the exact version to be installed -- see the example below.
-
-**Example command**
+**Example**
 ```ruby
 pip install requests jinja2==2.11.1
 ```
 
-## Uninstall Packages
+If you already have a package installed, you can replace it with a specific version by installing that version.
 
-```shell
-pip uninstall <package1_name> <package2_name>
+**Example**
+```ruby
+pip install requests==2.22.0
 ```
+
+## Uninstalling Packages
+
+You don't need to specify a version for uninstallation; whatever version of a package is installed will be uninstalled.
+
+**Example**
+```ruby
+pip uninstall requests jinja2
+```
+
+
+## Cleaning a program
+
+You can uninstall all packages from a program at once by using the `clean` command. 
 
 **Example command**
 ```ruby
-pip uninstall requests jinja2==2.11.1
+pip clean
 ```

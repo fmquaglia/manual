@@ -7,6 +7,7 @@ The DETA library provides a small Flask-inspired http router. For a more complet
 !!! Note
     From DETA lib version `21` the convention is `app.lib.http`. 
     For all earlier lib versions the convention is `app.http`. You can find a program's lib version by the `deta.lib` field in the `INFO` tab.
+    The latest lib version is `22`.
 
 **Arguments**
 
