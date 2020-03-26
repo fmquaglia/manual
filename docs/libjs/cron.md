@@ -1,22 +1,17 @@
-**`app.lib.cron()`** takes no parameters and executes the decorated function following a [scheduled execution](/use/cron).
-
-!!! Note
-    From DETA lib version `21` the convention is `app.lib.cron`. 
-    For all earlier lib versions the convention is `app.cron`. You can find a program's lib version by the `deta.lib` field in the `INFO` tab.
-    The latest lib version is `22`.
+**`app.lib.cron()`** takes a function and executes following a [scheduled execution](/use/cron).
 
 **Usage example:**
 
-```python
-from deta.lib import app
+```javascript
+const detalib = require('detalib');
+const app = detalib.App();
 
-@app.lib.cron()
-def cron_handler(event):
-    print("I run on a schedule")
-    return "done"
+app.lib.cron(async event => 'I run on a schedule');
+
+export.modules = app;
 ```
 
 **`event` attributes:**
 
-- `event.type` : `str` will be instantiated to `#!py "cron"`.
-- `event.time` : `str` time at which the event took place.
+- `event.type` : `String` will be instantiated to `'cron'`.
+- `event.time` : `String` time at which the event took place.
