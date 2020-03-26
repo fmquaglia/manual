@@ -31,20 +31,27 @@ nav:
     - Teletype (CLI): use/run.md
     - Schedule (cron): use/cron.md
     - HTTP / Webhook: use/http.md
-  - DETA Library:
+  - Node.js docs:
+    - Run (Teletype): libjs/run.md
+    - HTTP: libjs/http.md
+    - Cron: libjs/cron.md
+    - Responses: libjs/responses.md
+    - Web Frameworks: js_web_frameworks.md
+    - Packages (NPM): js_packages.md
+  - Python docs:
     - Run (Teletype): lib/run.md
     - HTTP: lib/http.md
     - Cron: lib/cron.md
     - Responses: lib/responses.md
+    - Web Frameworks: py_web_frameworks.md
+    - Packages (PIP): py_packages.md
   - Resources:
     - Database: resources/database.md
     - Cloud Files: resources/files.md
     - Email: resources/email.md
     - The Runtime: resources/runtime.md
-  - Installing Packages: packages.md
   - User Permissions: permissions.md
   - Authentication: auth.md
   - Debugging: debug.md
   - Teletype Commands (CLI): teletype.md
-  - Web Frameworks: web_frameworks.md
   - Contact/Feedback: contact.md
