@@ -10,7 +10,7 @@ running a web framework on DETA requires two simple steps.
 
 #### 1) Install the Framework
 
-Open a DETA program and [install the framework dependency](/packages/) using `pip install package` in the [Studio Teletype](/teletype/).
+Open a DETA program and [install the framework dependency](/packages/) using `npm install package` in the [Studio Teletype](/teletype/).
 
 #### 2) Instantiate your web app
 
