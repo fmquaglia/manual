@@ -25,26 +25,35 @@ extra_css:
   - css/extra.css
 nav:
   - Getting Started: index.md
-  # - Overview (Video): overview.md
-  # - Tutorial (Getting Started): tutorial.md
   - Using your programs: 
     - Teletype (CLI): use/run.md
     - Schedule (cron): use/cron.md
     - HTTP / Webhook: use/http.md
-  - DETA Library:
-    - Run (Teletype): lib/run.md
-    - HTTP: lib/http.md
-    - Cron: lib/cron.md
-    - Responses: lib/responses.md
-  - Resources:
-    - Database: resources/database.md
-    - Cloud Files: resources/files.md
-    - Email: resources/email.md
-    - The Runtime: resources/runtime.md
-  - Installing Packages: packages.md
+
+  - Python docs:
+    - Run (Teletype): python/lib/run.md
+    - HTTP: python/lib/http.md
+    - Cron: python/lib/cron.md
+    - Responses: python/lib/responses.md
+    - Web Frameworks: python/frameworks.md
+    - Packages (PIP): python/packages.md
+    - Resources:
+      - Database: python/resources/database.md
+      - Cloud Files: python/resources/files.md
+      - Email: python/resources/email.md
+  - Node.js docs:
+    - Run (Teletype): node/lib/run.md
+    - HTTP: node/lib/http.md
+    - Cron: node/lib/cron.md
+    - Web Frameworks: node/frameworks.md
+    - Packages (NPM): node/packages.md
+    - Resources:
+      - Database: node/resources/database.md
+      - Cloud Files: node/resources/files.md
+      - Email: node/resources/email.md
+  - The Runtime: runtime.md
   - User Permissions: permissions.md
   - Authentication: auth.md
   - Debugging: debug.md
   - Teletype Commands (CLI): teletype.md
-  - Web Frameworks: web_frameworks.md
   - Contact/Feedback: contact.md
