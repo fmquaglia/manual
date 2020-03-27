@@ -62,7 +62,8 @@ See the Node.js documentation to read your data from a **`Buffer`**
 ##### Code Example
 
 ```javascript
-text = files.get('hello.txt').read();
+const buf = await files.get('hello.txt');
+const text = buf.toString('utf8');
 ```
 
 <br />
@@ -71,17 +72,17 @@ text = files.get('hello.txt').read();
 
 for listing all your files or files in a specific directory:
 
-**`files.list(dir=None)`** lists all uploaded files. Provide the directory name to get the files inside it.
+**`files.list(dir='')`** lists all uploaded files. Provide the directory name to get the files inside it.
 
 ##### Code Examples
 
-```python
- # returns a list of all uploaded files (for the current program)
-files.list()
+```javascript
+// returns a list of all uploaded files (for the current program)
+await files.list();
 
-# returns a list of files inside the notes directory
-files.list("notes")
-files.list("notes/september")
+// returns a list of files inside the notes directory
+await files.list('notes');
+await files.list('notes/september');
 ```
 
 <br />
@@ -92,7 +93,7 @@ files.list("notes/september")
 
 ##### Code Examples
 
-```python
-files.delete("notes.md")
-files.delete("notes/september/1.txt")
+```javascript
+await files.delete('notes.md');
+await files.delete('notes/september/1.txt');
 ```
