@@ -11,8 +11,7 @@
 **Usage example:**
 
 ```javascript
-const detalib = require('detalib');
-const app = detalib.App();
+const { app } = require('detalib');
 
 app.lib.run(event => 'Willkommen in Berlin.');
 app.lib.run(event => 'Willkommen in Kreuzberg!', 'kreuzberg');
@@ -23,7 +22,7 @@ module.exports = app;
 
 <br />
 
-**Command (Teletype Studio)**
+**Command (Teletype)**
 
 ```ruby
 run
@@ -32,7 +31,7 @@ run
 **Response**
 
 ```javascript
-'Wilkommen in Berlin!';
+'Wilkommen in Berlin!'
 ```
 
 <br />
@@ -46,7 +45,7 @@ run kreuzberg
 **Response**
 
 ```javascript
-'Wilkommen in Kreuzberg!';
+'Wilkommen in Kreuzberg!'
 ```
 
 <br />

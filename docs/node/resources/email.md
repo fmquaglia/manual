@@ -17,10 +17,9 @@ Then use the command below.
 ##### example code
 
 ```javascript
-const { email, App } = require('detalib');
-const app = new App();
+const { app, email } = require('detalib');
 
-app.run('', async () => {
+app.run(async () => {
   await email('ludwig@example.com', 'Happy Birthday!', 'Dear Ludwig,...');
   await email(
     ['beverly@example.com', 'wesley@example.com'],

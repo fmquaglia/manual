@@ -3,6 +3,7 @@ DETA is an extremely fast way to get a web framework up and running, supporting 
 We tested the following frameworks:
 
 - Express
+- Koa
 
 ### How to
 
@@ -10,7 +11,7 @@ running a web framework on DETA requires two simple steps.
 
 #### 1) Install the Framework
 
-Open a DETA program and [install the framework dependency](/packages/) using `???` in the [Studio Teletype](/teletype/).
+Open a DETA program and [install the framework dependency](/packages/) using `npm install package` in the [Studio Teletype](/teletype/).
 
 #### 2) Instantiate your web app
 
@@ -40,9 +41,9 @@ Using detalib alongside a framework in a single DETA program is possible.
 To do so, call `App` from `detalib` and instantiate your framework inside it and export the object that you wrapped the framework.
 
 ```javascript
-const detalib = require('detalib');
+const { App } = require('detalib');
 const express = require('express');
-const app = detalib.App(express());
+const app = App(express());
 
 app.get('/', (req, res) => res.send('Hello from DETA + Express'));
 

@@ -1,6 +1,6 @@
 !!! Note
-Our `detalib` SDK is still work in progress and we will keep improving it in near future.
-If there's a method or feature you'd like, send us an email.
+    Our `detalib` SDK is still work in progress and we will keep improving it in near future.
+    If there's a method or feature you'd like, send us an email.
 
 DETA offers a fully managed key-value store database that's great for storing all kinds of data needed for smaller programs.
 There's no limit on the number of databases you create or the amount of data stored.
@@ -52,11 +52,10 @@ The `Database` instance offers a few useful methods:
 ##### Code
 
 ```javascript
-const { Database, App } = require('detalib');
+const { app, Database } = require('detalib');
 const db = new Database();
-const app = new App();
 
-app.run('', async event => {
+app.run(async event => {
   // Valid:
   await db.put('a', 'hello');
   await db.put('b', null);

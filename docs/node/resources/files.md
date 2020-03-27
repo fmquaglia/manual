@@ -1,6 +1,6 @@
 !!! Note
-DETA Library `detalib` is still work in progress and we will keep improving it in the coming weeks and months.
-If there's a method or feature you _really_ need, send us an email.
+    DETA Library `detalib` is still work in progress and we will keep improving it in the coming weeks and months.
+    If there's a method or feature you _really_ need, send us an email.
 
 Deta Cloud Files is a fully managed file and object storage service that comes in handy when storing files of all sizes.
 
