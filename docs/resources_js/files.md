@@ -57,7 +57,7 @@ const buf = await files.get('todos/week2/monday.md');
 const markdown = buf.toString('utf8');
 ```
 
-See the Node.js documentation to read your data from a **`Buffer`**
+See the Node.js documentation to read your data from a **[`Buffer`](https://nodejs.org/docs/latest-v12.x/api/buffer.html)**
 
 ##### Code Example
 
