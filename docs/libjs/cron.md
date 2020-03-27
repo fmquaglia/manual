@@ -3,8 +3,7 @@
 **Usage example:**
 
 ```javascript
-const detalib = require('detalib');
-const app = detalib.App();
+const {app} = require('detalib');
 
 app.lib.cron(async event => 'I run on a schedule');
 
