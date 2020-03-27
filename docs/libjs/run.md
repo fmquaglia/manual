@@ -1,10 +1,10 @@
-**`app.lib.run(action, func)`** is used to execute code following a [run command from Teletype](/use/run). It takes name of the action and the function to be executed.
+**`app.lib.run(func, action)`** is used to execute code following a [run command from Teletype](/use/run). It takes name of the action and the function to be executed.
 
 **Arguments**
 
-- `action`: `String` indicates which **`app.lib.run()`** function to execute.
-
 - `func`: `Function` indicates which function to execute when `action` is passed
+
+- `action`: `String` indicates which **`app.lib.run()`** function to execute.
 
 <br />
 
@@ -14,9 +14,9 @@
 const detalib = require('detalib');
 const app = detalib.App();
 
-app.lib.run('', async event => 'Willkommen in Berlin.');
-app.lib.run('kreuzberg', event => 'Willkommen in Kreuzberg!');
-app.lib.run('steglitz', event => 'Willkommen in Steglitz!');
+app.lib.run(event => 'Willkommen in Berlin.');
+app.lib.run(event => 'Willkommen in Kreuzberg!', 'kreuzberg');
+app.lib.run(event => 'Willkommen in Steglitz!', 'steglitz');
 
 module.exports = app;
 ```
@@ -27,12 +27,6 @@ module.exports = app;
 
 ```ruby
 run
-```
-
-**Command (Teletype Dash)**
-
-```ruby
-prog_name
 ```
 
 **Response**
@@ -49,12 +43,6 @@ prog_name
 run kreuzberg
 ```
 
-**Command (Teletype Dash)**
-
-```ruby
-prog_name kreuzberg
-```
-
 **Response**
 
 ```javascript
@@ -69,7 +57,3 @@ prog_name kreuzberg
 - `event.body`: `String` provides the raw json payload.
 - `event.type`: `String` will be instantiated to `'run'`.
 - `event.action`: `String` bears the action provided by the user or an empty string if no action is provided.
-
-**Responses**
-
-See [primitive responses](/lib/responses#primitive-responses).
