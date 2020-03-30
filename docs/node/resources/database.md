@@ -40,7 +40,7 @@ The `Database` instance offers a few useful methods:
 
 #### Put
 
-`db.put(key, value)` Inserts a single item into the database. If the key already exists, then the **original value gets overridden**.
+`db.put(key, value)` inserts a single item into the database. If the key already exists, then the **original value gets overridden**.
 
 * `key`: must be a non-empty string.
     * Examples: `"first"`, `"1"`, `"somerandomid"`

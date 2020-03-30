@@ -21,11 +21,11 @@ Then use one of the following four methods below.
 * **`name`** is the object's name, it must be a string.
 * **`content`** is the object's content. It can be one of the following:
 
-  * `String`
-  * `Buffer`
-  * `Blob`
-  * `Typed Array`
-  * `ReadableStream`
+    * `String`
+    * `Buffer`
+    * `Blob`
+    * `Typed Array`
+    * `ReadableStream`
 
 You can store files in multiple "directories" by prefixing the name of the file with the desired directory name, e.g. `"reports/may.pdf"`.
 
@@ -47,7 +47,7 @@ await files.put('notes/day14.txt', 'We did...');
 
 * **`name`**: `String`
 * Return value:
-  * a `Buffer` will be sent back if an object is found with the provided `name`.
+    * a `Buffer` will be sent back if an object is found with the provided `name`.
 
 ##### Code Example
 
@@ -69,9 +69,8 @@ const text = buf.toString('utf8');
 
 ### List
 
-for listing all your files or files in a specific directory:
-
-**`files.list(dir='')`** lists all uploaded files. Provide the directory name to get the files inside it.
+**`files.list(dir='')`** lists all your files or files in a specific directory.
+Provide the directory name to get the files inside it.
 
 ##### Code Examples
 
