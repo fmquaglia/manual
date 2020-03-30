@@ -10,9 +10,9 @@ Then use the command below.
 
 **`email(to, subject, message)`** to send an email.
 
-- **`to`** an email address (`String`) or an `Array` of recipients.
-- **`subject`** the subject line (`String`).
-- **`message`** the email's body (`String`).
+* **`to`** an email address (`String`) or an `Array` of recipients.
+* **`subject`** the subject line (`String`).
+* **`message`** the email's body (`String`).
 
 ##### example code
 

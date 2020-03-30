@@ -1,6 +1,8 @@
+<!-- prettier-ignore-start -->
 !!! Note
     DETA Library `detalib` is still work in progress and we will keep improving it in the coming weeks and months.
     If there's a method or feature you _really_ need, send us an email.
+<!-- prettier-ignore-end -->
 
 Deta Cloud Files is a fully managed file and object storage service that comes in handy when storing files of all sizes.
 
@@ -16,14 +18,14 @@ Then use one of the following four methods below.
 
 **`files.put(name, content)`**: store a text file or binary object.
 
-- **`name`** is the object's name, it must be a string.
-- **`content`** is the object's content. It can be one of the following:
+* **`name`** is the object's name, it must be a string.
+* **`content`** is the object's content. It can be one of the following:
 
-  - `String`
-  - `Buffer`
-  - `Blob`
-  - `Typed Array`
-  - `ReadableStream`
+    * `String`
+    * `Buffer`
+    * `Blob`
+    * `Typed Array`
+    * `ReadableStream`
 
 You can store files in multiple "directories" by prefixing the name of the file with the desired directory name, e.g. `"reports/may.pdf"`.
 
@@ -35,8 +37,6 @@ await files.put('cheese.md', '# Deutscher Käse ist...');
 
 // inside a directory
 await files.put('notes/day14.txt', 'We did...');
-
-// Will come up with more examples during test.
 ```
 
 <br />
@@ -45,10 +45,9 @@ await files.put('notes/day14.txt', 'We did...');
 
 **`files.get(name)`** retrieves a file based on file name or path if it lives inside a directory.
 
-- **`name`** string
-- return value:
-  - a `Buffer` will be sent back if an object is found with the provided `name`.
-  - _**Need to see what happens when the object with the name**_
+* **`name`**: `String`
+* Return value:
+    * a `Buffer` will be sent back if an object is found with the provided `name`.
 
 ##### Code Example
 
@@ -70,9 +69,8 @@ const text = buf.toString('utf8');
 
 ### List
 
-for listing all your files or files in a specific directory:
-
-**`files.list(dir='')`** lists all uploaded files. Provide the directory name to get the files inside it.
+**`files.list(dir='')`** lists all your files or files in a specific directory.
+Provide the directory name to get the files inside it.
 
 ##### Code Examples
 

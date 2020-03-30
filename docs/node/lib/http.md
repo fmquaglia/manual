@@ -1,4 +1,4 @@
-The DETA delegates http routing to external frameworks. Consider using [an external framework in your DETA program](/web_frameworks/) such as [Express.js](https://expressjs.com/) or [Koa](https://koajs.com/).
+DETA Node.js runtime delegates HTTP routing to external frameworks. Consider using [an external framework in your DETA program](/web_frameworks/) such as [Express.js](https://expressjs.com/) or [Koa](https://koajs.com/).
 
 Import the web framework and make calls to the web framework as you would outside of DETA. Then export the app object.
 
@@ -20,7 +20,7 @@ const Koa = require('koa');
 const app = new Koa();
 
 app.use(async ctx => {
-  ctx.body = 'Hello World';
+  ctx.body = 'Hello from DETA + Koa';
 })
 
 module.exports = app;
