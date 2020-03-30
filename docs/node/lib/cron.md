@@ -12,5 +12,5 @@ export.modules = app;
 
 **`event` attributes:**
 
-- `event.type` : `String` will be instantiated to `'cron'`.
-- `event.time` : `String` time at which the event took place.
+* `event.type` : `String` will be instantiated to `'cron'`.
+* `event.time` : `String` time at which the event took place.

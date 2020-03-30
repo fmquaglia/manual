@@ -42,14 +42,14 @@ The `Database` instance offers a few useful methods:
 
 `db.put(key, value)` Inserts a single item into the database. If the key already exists, then the **original value gets overridden**.
 
-- `key`: must be a non-empty string.
-  - Examples: `"first"`, `"1"`, `"somerandomid"`
-- `value`: can be any objects that can be serialized
-  - `String` (_non-empty_)
-  - `Number` (_except NaN and Infinity_)
-  - `Boolean`
-  - Serializable `Object`
-  - `null`
+* `key`: must be a non-empty string.
+  * Examples: `"first"`, `"1"`, `"somerandomid"`
+* `value`: can be any objects that can be serialized
+  * `String` (_non-empty_)
+  * `Number` (_except NaN and Infinity_)
+  * `Boolean`
+  * Serializable `Object`
+  * `null`
 
 ##### Code
 
