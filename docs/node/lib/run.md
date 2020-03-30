@@ -2,9 +2,9 @@
 
 **Arguments**
 
-- `func`: `Function` function to be executed when `action` is passed to the [run command from Teletype](/use/run).
+* `func`: `Function` function to be executed when `action` is passed to the [run command from Teletype](/use/run).
+* `action`: `String` name of the action to trigger `func`.
 
-- `action`: `String` name of the action to trigger `func`.
 
 <br />
 
@@ -52,7 +52,7 @@ run kreuzberg
 
 **`event` attributes**
 
-- `event.json`: `Object` provides the JSON payload as an object.
-- `event.body`: `String` provides the raw JSON payload.
-- `event.type`: `String` will be instantiated to `'run'`.
-- `event.action`: `String` bears the action provided by the user or an empty string if no action is provided.
+* `event.json`: `Object` provides the JSON payload as an object.
+* `event.body`: `String` provides the raw JSON payload.
+* `event.type`: `String` will be instantiated to `'run'`.
+* `event.action`: `String` bears the action provided by the user or an empty string if no action is provided.

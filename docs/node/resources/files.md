@@ -45,8 +45,8 @@ await files.put('notes/day14.txt', 'We did...');
 
 **`files.get(name)`** retrieves a file based on file name or path if it lives inside a directory.
 
-* **`name`** string
-* return value:
+* **`name`**: `String`
+* Return value:
   * a `Buffer` will be sent back if an object is found with the provided `name`.
 
 ##### Code Example
