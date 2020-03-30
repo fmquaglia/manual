@@ -1,10 +1,10 @@
-**`app.lib.run(func, action)`** is used to execute code following a [run command from Teletype](/use/run). It takes name of the action and the function to be executed.
+**`app.lib.run(func, action='')`** is used to execute code following a [run command from Teletype](/use/run). It takes the function to be executed and the name of the action to trigger the function.
 
 **Arguments**
 
-- `func`: `Function` indicates which function to execute when `action` is passed
+- `func`: `Function` function to be executed when `action` is passed to the [run command from Teletype](/use/run).
 
-- `action`: `String` indicates which **`app.lib.run()`** function to execute.
+- `action`: `String` name of the action to trigger `func`.
 
 <br />
 
@@ -31,7 +31,7 @@ run
 **Response**
 
 ```javascript
-'Wilkommen in Berlin!'
+'Wilkommen in Berlin!';
 ```
 
 <br />
@@ -45,7 +45,7 @@ run kreuzberg
 **Response**
 
 ```javascript
-'Wilkommen in Kreuzberg!'
+'Wilkommen in Kreuzberg!';
 ```
 
 <br />
@@ -53,6 +53,6 @@ run kreuzberg
 **`event` attributes**
 
 - `event.json`: `Object` provides the JSON payload as an object.
-- `event.body`: `String` provides the raw json payload.
+- `event.body`: `String` provides the raw JSON payload.
 - `event.type`: `String` will be instantiated to `'run'`.
 - `event.action`: `String` bears the action provided by the user or an empty string if no action is provided.

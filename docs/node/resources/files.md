@@ -1,6 +1,8 @@
+<!-- prettier-ignore-start -->
 !!! Note
     DETA Library `detalib` is still work in progress and we will keep improving it in the coming weeks and months.
     If there's a method or feature you _really_ need, send us an email.
+<!-- prettier-ignore-end -->
 
 Deta Cloud Files is a fully managed file and object storage service that comes in handy when storing files of all sizes.
 
@@ -35,8 +37,6 @@ await files.put('cheese.md', '# Deutscher Käse ist...');
 
 // inside a directory
 await files.put('notes/day14.txt', 'We did...');
-
-// Will come up with more examples during test.
 ```
 
 <br />
@@ -48,7 +48,6 @@ await files.put('notes/day14.txt', 'We did...');
 - **`name`** string
 - return value:
   - a `Buffer` will be sent back if an object is found with the provided `name`.
-  - _**Need to see what happens when the object with the name**_
 
 ##### Code Example
 

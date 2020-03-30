@@ -1,6 +1,8 @@
+<!-- prettier-ignore-start -->
 !!! Note
     Our `detalib` SDK is still work in progress and we will keep improving it in near future.
     If there's a method or feature you'd like, send us an email.
+<!-- prettier-ignore-end -->
 
 DETA offers a fully managed key-value store database that's great for storing all kinds of data needed for smaller programs.
 There's no limit on the number of databases you create or the amount of data stored.
@@ -42,8 +44,8 @@ The `Database` instance offers a few useful methods:
 
 - `key`: must be a non-empty string.
   - Examples: `"first"`, `"1"`, `"somerandomid"`
-- `value`: can be _**any objects that can be serialized**_
-  - `String` (_non-empty_) _**that's not true. you can have empty string right?**_
+- `value`: can be any objects that can be serialized
+  - `String` (_non-empty_)
   - `Number` (_except NaN and Infinity_)
   - `Boolean`
   - Serializable `Object`
