@@ -50,7 +50,7 @@ run kreuzberg
 
 <br />
 
-You can also stack `run` and `cron` together
+You can also stack `run` and `cron` together.
 
 ```javascript
 const { app } = require('detalib');
