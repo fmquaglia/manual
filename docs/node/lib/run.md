@@ -50,6 +50,20 @@ run kreuzberg
 
 <br />
 
+You can also stack `run` and `cron` together
+
+```javascript
+const { app } = require('detalib');
+
+const printTime = event => `it is ${(new Date).toTimeString()}`
+
+app.lib.run(printTime, 'time');
+app.lib.cron(printTime);
+
+module.exports = app;
+```
+
+
 **`event` attributes**
 
 * `event.json`: `Object` provides the JSON payload as an object.
