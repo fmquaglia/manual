@@ -28,12 +28,12 @@ Refer to [Responses docs](/lib/responses).
 ```python
 from deta.lib import app
 
-@app.http("/", methods=["GET"])
+@app.lib.http("/", methods=["GET"])
 def get_handler(event):
     name = event.params.get("name")
     return {"greeting": f"Hallo, {name}!"}
 
-@app.http("/kiez/", methods=["POST"])
+@app.lib.http("/kiez/", methods=["POST"])
 def post_handler(event):
     kiez = event.json.get("kiez")
     return f"Your favorite Kiez in Berlin is {kiez}."

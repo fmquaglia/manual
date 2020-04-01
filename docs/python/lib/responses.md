@@ -7,11 +7,11 @@ When returning a response for a [Teletype run command](/use/run/) (and sometimes
 Examples
 
 ```python
-@app.run()
+@app.lib.run()
 def run_handler(event): 
     return "Hello, space!"
 
-@app.http("/", methods=['GET'])
+@app.lib.http("/", methods=['GET'])
 def get_handler(event): 
     return {"name": "Wesley", "age": 27}
 ```
@@ -50,7 +50,7 @@ This is the base response and can be used to return custom responses.
 ```python
 from deta.lib.responses import Response
 
-@app.http("/", methods=['GET'])
+@app.lib.http("/", methods=['GET'])
 def get_handler(event): 
     return Response("A GET triggered me!", content_type="text/plain", code=200, headers=None)
 ```
@@ -69,12 +69,12 @@ Inherits from [Response](#response).
 from deta.lib.responses import JSON
 
 
-@app.http("/", methods=['GET'])
+@app.lib.http("/", methods=['GET'])
 def get_handler(event): 
     response = {"name": "Wesley", "age": 27}
     return JSON(response)
 
-@app.http("/users", methods=['POST'])
+@app.lib.http("/users", methods=['POST'])
 def post_handler(event): 
     # parse and save user's data...
     response = {"status": "ok"}
@@ -94,7 +94,7 @@ Inherits from [Response](#response).
 from deta.lib.responses import HTML
 
 
-@app.http("/", methods=['GET'])
+@app.lib.http("/", methods=['GET'])
 def get_handler(event): 
     # it is also possible to return an SVG object the same way 
     return HTML('<h1>hello world</h1>')
@@ -121,7 +121,7 @@ For HTTP redirects.
 from deta.lib.responses import Redirect
 
 
-@app.http("/", methods=['GET'])
+@app.lib.http("/", methods=['GET'])
 def get_handler(event): 
     return Redirect("https://example.com/new-page", temp=True)
 ```
